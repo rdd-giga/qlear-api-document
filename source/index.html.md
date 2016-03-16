@@ -4,165 +4,121 @@ title: API Reference
 language_tabs:
   - shell
   - ruby
-  - python
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='http://www.qlear.build' target="_blank">API Document for QLEAR</a>
 
-includes:
-  - errors
+<!-- includes:
+  - errors -->
 
 search: true
 ---
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
-
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+Welcome to the QLEAR API! You can use our API to access QLEAR API endpoints, which can get all informations about user, location, monitor and reading data etc.
 
 # Authentication
 
-> To authorize, use this code:
+> To authorize, use the access token, assigned by QLEAR:
 
 ```ruby
-require 'kittn'
+#You can use any other gem to replace rest-client
+require 'rest-client'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+content = RestClient.get 'http://example.com', {params: {:access_token: '12345'}}
 ```
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+# With shell, you can just pass the correct query with each request
+
+curl "http://example.com?access_token=12345&[other_params]"
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Make sure to replace `12345` with your access token.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+QLEAR uses access token to allow access to the API. you can contact QLEAR support to obtain the token.
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+QLEAR expects for the access token to be included in all API requests to the server in the query that looks like the following:
 
-`Authorization: meowmeowmeow`
+`http://example.com?access_token=12345`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+* You must replace <code>12345</code> with your personal access token.
 </aside>
 
-# Kittens
+<aside class="notice">
+* You must replace <code>http://example.com</code> with the correct service url.
+</aside>
 
-## Get All Kittens
+# Cities
+
+## Get All Cities
 
 ```ruby
-require 'kittn'
+require 'rest-client'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
+content = RestClient.get http://example.com/v2/cities, {params: {:access_token: '12345'}}
 ```
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl "http://example.com/v2/cities?access_token=12345"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+
+{
+  "data": [
+    {
+      "id": 2,
+      "name": "Beijing",
+      "image": null
+    },
+    {
+      "id": 800,
+      "name": "Shanghai",
+      "image": "https://dn-reset.qbox.me/uploads/city/theme/thumb_beb52b19-3f34-4cac-b093-95709cfedc59.jpg"
+    },
+    {
+      "id": 864,
+      "name": "Suzhou",
+      "image": null
+    }
+  ],
+  "meta": {
+    "total_count": 3,
+    "total_pages": 1,
+    "current_page": 1,
+    "last_page": true
   }
-]
+}
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all available cities.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET http://example.com/v2/cities`
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+access_token | false | Access Token.
+locale | en | If set to en, will return english name for city.
+page|1|Page number
+size|20|Size per page
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
 
-## Get a Specific Kitten
+Available values for locale:
 
-```ruby
-require 'kittn'
+* en
+* zh-CN
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
 
-```python
-import kittn
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
 
