@@ -4,6 +4,7 @@ title: API Reference
 language_tabs:
   - shell
   - ruby
+  - javascript
 
 toc_footers:
   - <a href='http://www.qlear.build' target="_blank">API Document for QLEAR</a>
@@ -22,11 +23,22 @@ Welcome to the QLEAR API! You can use our API to access QLEAR API endpoints, whi
 
 > To authorize, use the access token, assigned by QLEAR:
 
+```javascript
+fetch('http://example.com/path_of_api?access_token=12345')
+  .then(function(response) {
+    return response.json()
+  }).then(function(json) {
+    console.log(json)
+  }).catch(function(ex) {
+    console.log('parsing failed', ex)
+  })
+```
+
 ```ruby
 #You can use any other gem to replace rest-client
 require 'rest-client'
 
-content = RestClient.get 'http://example.com', {params: {:access_token: '12345'}}
+content = RestClient.get 'http://example.com', {params: {access_token: '12345'}}
 ```
 
 
@@ -56,10 +68,21 @@ QLEAR expects for the access token to be included in all API requests to the ser
 
 ## Get All Cities
 
+```javascript
+fetch('http://example.com/v2/cities?access_token=12345')
+  .then(function(response) {
+    return response.json()
+  }).then(function(json) {
+    console.log(json)
+  }).catch(function(ex) {
+    console.log('parsing failed', ex)
+  })
+```
+
 ```ruby
 require 'rest-client'
 
-content = RestClient.get http://example.com/v2/cities, {params: {:access_token: '12345'}}
+content = RestClient.get http://example.com/v2/cities, {params: {access_token: '12345'}}
 ```
 
 
