@@ -1,15 +1,9 @@
 ---
-title: API Reference
+title: API Document for QLEAR (v2.0)
 
 language_tabs:
   - shell
   - ruby
-
-toc_footers:
-  - <a href='http://www.qlear.build' target="_blank">API Document for QLEAR</a>
-
-<!-- includes:
-  - errors -->
 
 search: true
 ---
