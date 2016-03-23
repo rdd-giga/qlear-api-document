@@ -91,7 +91,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -104,7 +104,6 @@
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -121,72 +120,65 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
+<blockquote>
+<p>To access api, use the access token, assigned by QLEAR:</p>
+</blockquote>
+
 <p>Welcome to the QLEAR API! You can use our API to access QLEAR API endpoints, which can get all informations about user, location, monitor and reading data etc.</p>
 
-<h1 id="authentication">Authentication</h1>
-
-<blockquote>
-<p>To authorize, use the access token, assigned by QLEAR:</p>
-</blockquote>
-<pre class="highlight javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'http://example.com/path_of_api?access_token=12345'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
-  <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
-  <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'parsing failed'</span><span class="p">,</span> <span class="nx">ex</span><span class="p">)</span>
-  <span class="p">})</span>
-</code></pre>
+<h1 id="access-token">Access Token</h1>
 <pre class="highlight ruby"><code><span class="c1">#You can use any other gem to replace rest-client</span>
 <span class="nb">require</span> <span class="s1">'rest-client'</span>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com'</span><span class="p">,</span> <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">}}</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/ping'</span><span class="p">,</span>
+  <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">}}</span>
 </code></pre>
 <pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct query with each request</span>
 
-curl <span class="s2">"http://example.com?access_token=12345&amp;[other_params]"</span>
+curl <span class="s2">"http://example.com/ping?access_token=12345"</span>
 </code></pre>
 
 <blockquote>
-<p>Make sure to replace <code class="prettyprint">12345</code> with your access token.</p>
+<p>The above returns JSON structured like this:</p>
 </blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pong"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <p>QLEAR uses access token to allow access to the API. you can contact QLEAR support to obtain the token.</p>
 
 <p>QLEAR expects for the access token to be included in all API requests to the server in the query that looks like the following:</p>
 
-<p><code class="prettyprint">http://example.com?access_token=12345</code></p>
+<p><code class="prettyprint">http://example.com/ping?access_token=12345</code></p>
 
 <aside class="notice">
 * You must replace <code>12345</code> with your personal access token.
 </aside>
 
-<aside class="notice">
-* You must replace <code>http://example.com</code> with the correct service url.
-</aside>
+<h1 id="localization">Localization</h1>
+
+<p>QLEAR API supports localization for error messages and other strings. Localization is defined in each request with query string &lsquo;locale&rsquo;. Accepted values are currently:</p>
+
+<ul>
+<li>en    - English (default)</li>
+<li>zh-CN - Chinese</li>
+</ul>
+
+<p>Numbers, currency and datetime don’t rely on localization so they will always be returned in standard format.</p>
 
 <h1 id="cities">Cities</h1>
 
 <h2 id="get-all-cities">Get All Cities</h2>
-<pre class="highlight javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'http://example.com/v2/cities?access_token=12345'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
-  <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
-  <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'parsing failed'</span><span class="p">,</span> <span class="nx">ex</span><span class="p">)</span>
-  <span class="p">})</span>
-</code></pre>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="n">http</span><span class="ss">:/</span><span class="o">/</span><span class="n">example</span><span class="p">.</span><span class="nf">com</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">cities</span><span class="p">,</span> <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">}}</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/cities'</span><span class="p">,</span>
+  <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">}}</span>
 </code></pre>
 <pre class="highlight shell"><code>curl <span class="s2">"http://example.com/v2/cities?access_token=12345"</span>
 </code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
 <pre class="highlight json"><code><span class="w">
 </span><span class="p">{</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -226,45 +218,359 @@ curl <span class="s2">"http://example.com?access_token=12345&amp;[other_params]"
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Require</th>
 <th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>access_token</td>
-<td>false</td>
+<td>true</td>
+<td></td>
 <td>Access Token.</td>
 </tr>
 <tr>
 <td>locale</td>
+<td>false</td>
 <td>en</td>
-<td>If set to en, will return english name for city.</td>
+<td>Localization</td>
 </tr>
 <tr>
 <td>page</td>
+<td>false</td>
 <td>1</td>
 <td>Page number</td>
 </tr>
 <tr>
 <td>size</td>
+<td>false</td>
 <td>20</td>
 <td>Size per page</td>
 </tr>
 </tbody></table>
 
-<p>Available values for locale:</p>
+<h2 id="get-activity-cities">Get Activity Cities</h2>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
-<ul>
-<li>en</li>
-<li>zh-CN</li>
-</ul>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/cities/activity'</span><span class="p">,</span>
+  <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">}}</span>
+</code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/v2/cities/activity?access_token=12345"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"china"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beijing"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">800</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shanghai"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dn-reset.qbox.me/uploads/city/theme/thumb_beb52b19-3f34-4cac-b093-95709cfedc59.jpg"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">864</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suzhou"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"global"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3238</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Xianggang"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>Get all activity cities, grouping by country.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://example.com/v2/cities/activity</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Require</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td></td>
+<td>Access Token.</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>false</td>
+<td>en</td>
+<td>Localization</td>
+</tr>
+</tbody></table>
+
+<h1 id="location">Location</h1>
+
+<h2 id="get-all-locations">Get All Locations</h2>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/locations'</span><span class="p">,</span>
+  <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">per: </span><span class="mi">2</span><span class="p">,</span> <span class="ss">page: </span><span class="mi">2</span><span class="p">}}</span>
+</code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/v2/locations?access_token=12345&amp;per=2&amp;page=2"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">41</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canadian International School of Beijing"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"theme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dn-reset.qbox.me//uploads/location/theme/thumb_66c95d6d-fe28-4e46-a66f-bb4286d572d4.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"indoor"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"reading"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"pm2p5"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"bto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"--"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YCIS Beijing"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"theme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dn-reset.qbox.me//uploads/location/theme/thumb_2916045d-f8b4-4dff-9244-5c6dfad3ca2e.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"indoor"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"reading"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"pm2p5"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"bto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"--"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Get all locations, can be filtered by city id and location name</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://example.com/v2/locations</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Require</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>false</td>
+<td>Access Token.</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>false</td>
+<td>en</td>
+<td>Localization</td>
+</tr>
+<tr>
+<td>city_id</td>
+<td>false</td>
+<td></td>
+<td>City ID</td>
+</tr>
+<tr>
+<td>name</td>
+<td>falase</td>
+<td></td>
+<td>Location name (support fuzzy query, SFQ)</td>
+</tr>
+<tr>
+<td>page</td>
+<td>false</td>
+<td>1</td>
+<td>Page number</td>
+</tr>
+<tr>
+<td>size</td>
+<td>false</td>
+<td>20</td>
+<td>Size per page</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-location-details">Get Location Details</h2>
+<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/location/45'</span>
+</code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/v2/locations/45"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Glumac"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">800</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shanghai"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dn-reset.qbox.me/uploads/location/logo/dc7f364a-448e-4ec0-8996-dda793b938c8.png"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"theme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dn-reset.qbox.me/uploads/location/theme/0abd7419-9667-43de-bd10-9fa95add6db9.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"indoor"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"stale"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"follow"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"primary_indicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pm2p5"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-23 17:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"indoor_reading"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"indicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pm2p5"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PM 2.5"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"μg/m³"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"indicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"co2"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CO2"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ppm"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">360</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"indicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tvoc"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Total VOC"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mg/m³"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.04</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"indicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"temperature"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Temperature"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"°C"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"indicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"humidity"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Humidity"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"%RH"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">36.73</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"outdoor_reading"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"indicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pm2p5"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PM 2.5"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"μg/m³"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"moderate"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"indicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"temperature"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Temperature"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"°C"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"indicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"humidity"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Humidity"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"%RH"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"bto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.8"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"monitors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"PM 2.5"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"certifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESET Certified"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dn-reset.qbox.me/uploads/certification/logo/7f9180e3-916f-465d-9a62-3b7e3a86b279.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESET"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WELL Certified"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dn-reset.qbox.me/uploads/certification/logo/0e283e52-6a29-427e-ad1b-dbfc75440df0.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LEED Certified"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dn-reset.qbox.me/uploads/certification/logo/a4c9c016-ee81-413c-a48a-47e5d3bcda5a.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LBC Certified"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dn-reset.qbox.me/uploads/certification/logo/c3b0c543-c194-45ff-80ed-e9a1f2cf30bb.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Get location details by ID</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://example.com/v2/locations/45</code></p>
+
+<aside class="notice">
+* You must replace <code>24</code> with your location ID.
+</aside>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Require</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td></td>
+<td>Access Token.</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>false</td>
+<td>en</td>
+<td>Localization</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
                 <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
