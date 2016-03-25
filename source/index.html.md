@@ -204,6 +204,8 @@ curl "http://example.com/v2/locations?access_token=12345&per=2&page=2"
     {
       "id": 41,
       "name": "Canadian International School of Beijing",
+      "city_id": 800,
+      "city_name": "Shanghai",
       "station_name": null,
       "theme": "https://dn-reset.qbox.me//uploads/location/theme/thumb_66c95d6d-fe28-4e46-a66f-bb4286d572d4.jpg",
       "category": "indoor",
@@ -217,6 +219,8 @@ curl "http://example.com/v2/locations?access_token=12345&per=2&page=2"
     {
       "id": 33,
       "name": "YCIS Beijing",
+      "city_id": 800,
+      "city_name": "Shanghai",
       "station_name": null,
       "theme": "https://dn-reset.qbox.me//uploads/location/theme/thumb_2916045d-f8b4-4dff-9244-5c6dfad3ca2e.jpg",
       "category": "indoor",
