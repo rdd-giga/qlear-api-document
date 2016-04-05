@@ -174,8 +174,8 @@ Get user profile with the giving auth token, returned by server.
 Parameter | Require| Default | Description
 --------- | -------| ------- | -----------
 access_token | true| | Access Token.
-locale | false| en | Localization
 auth_token|true||Auth Token
+locale | false| en | Localization
 
 ## Update Profile
 
@@ -216,8 +216,8 @@ Update profile
 Parameter | Require| Default | Description
 --------- | -------| ------- | -----------
 access_token | true| | Access Token.
-locale | false| en | Localization
 auth_token|true||Auth Token
+locale | false| en | Localization
 user_name|false||User Name
 first_name|false||First Name
 last_name|false|| Last Name
@@ -252,8 +252,8 @@ Update profile
 Parameter | Require| Default | Description
 --------- | -------| ------- | -----------
 access_token | true| | Access Token.
-locale | false| en | Localization
 auth_token|true||Auth Token
+locale | false| en | Localization
 old_password|true||Previous Password
 new_password|true||New Password
 
@@ -314,6 +314,7 @@ This endpoint retrieves all available cities.
 Parameter | Require| Default | Description
 --------- | -------| ------- | -----------
 access_token | true| | Access Token.
+auth_token|true||Auth Token
 locale | false| en | Localization
 page|false|1|Page number
 size|false|20|Size per page
@@ -375,6 +376,7 @@ Get all activity cities, grouping by country.
 Parameter | Require| Default | Description
 --------- | -------| ------- | -----------
 access_token|true |  | Access Token.
+auth_token|true||Auth Token
 locale |false| en | Localization
 
 
@@ -448,6 +450,7 @@ Get all locations, can be filtered by city id and location name
 Parameter | Require|  Default | Description
 --------- | ------- | ------- | -----------
 access_token|true | false | Access Token.
+auth_token|true||Auth Token
 locale |false| en | Localization
 city_id|false|  | City ID
 name|falase|| Location name (support fuzzy query, SFQ)
@@ -586,6 +589,7 @@ Get location details by ID
 Parameter |Require| Default | Description
 --------- | ------- | ------- | -----------
 access_token |true|  | Access Token.
+auth_token|true||Auth Token
 locale |false| en | Localization
 
 
@@ -675,6 +679,7 @@ Get monitor's detail, which binding the specific location
 Parameter | Require|  Default | Description
 --------- | ------- | ------- | -----------
 access_token|true | false | Access Token.
+auth_token|true||Auth Token
 locale |false| en | Localization
 location_id|true|  | Location ID
 monitor_id|true|| Monitor ID
@@ -766,6 +771,7 @@ Get monitor's detail
 Parameter | Require|  Default | Description
 --------- | ------- | ------- | -----------
 access_token|true | false | Access Token.
+auth_token|true||Auth Token
 locale |false| en | Localization
 location_id|true|  | Location ID
 monitor_id|true|| Monitor ID
@@ -972,6 +978,7 @@ Retrieves all the average readings of specific location or monitor.
 Parameter | Require| Default | Description
 --------- | -------| ------- | -----------
 access_token | true| | Access Token.
+auth_token|true||Auth Token
 location_id | false|  | Location id
 monitor_id|false||Monitor id, use comma if more than one, eg: 12,25
 indicator|false|pm2p5|Available indicators: pm2p5, pm10, co2, co, tvoc, hcho, humidity, temperature. Use comma if more than one.
