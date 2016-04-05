@@ -2,7 +2,6 @@
 title: API Document for QLEAR (v2.0)
 
 language_tabs:
-  - shell
   - ruby
 
 search: true
@@ -17,39 +16,24 @@ Welcome to the QLEAR API! You can use our API to access QLEAR API endpoints, whi
 
 
 ```ruby
-#You can use any other gem to replace rest-client
-require 'rest-client'
-
-content = RestClient.get 'http://example.com/ping',
+content = RestClient.get 'http://example.com/v2/ping',
   {params: {access_token: '12345'}}
-```
-
-
-```shell
-# With shell, you can just pass the correct query with each request
-
-curl "http://example.com/ping?access_token=12345"
 ```
 
 > The above returns JSON structured like this:
 
 ```json
-
 {
-  "status": "pong",
-  "code": 200
+  "meta": {
+    "code": 10000,
+    "message": "Success"
+  }
 }
 ```
 
 QLEAR uses access token to allow access to the API. you can contact QLEAR support to obtain the token.
 
-QLEAR expects for the access token to be included in all API requests to the server in the query that looks like the following:
-
-`http://example.com/ping?access_token=12345`
-
-<aside class="notice">
-* You must replace <code>12345</code> with your personal access token.
-</aside>
+QLEAR expects for the access token to be included in all API requests to the server in the query string.
 
 # Localization
 
@@ -59,6 +43,219 @@ QLEAR API supports localization for error messages and other strings. Localizati
 * zh-CN - Chinese
 
 Numbers, currency and datetime don’t rely on localization so they will always be returned in standard format.
+
+# User
+## Sign Up
+
+
+```ruby
+require 'rest-client'
+
+content = RestClient.post 'http://example.com/v2/users/sign_up',
+  {params: {access_token: '12345', email: 'm2@giga.build', password: '11111111', user_name: 'Test User', last_name: '', first_name: ''}}
+```
+
+```json
+
+{
+  "data": {
+    "id": 65,
+    "email": "m2@giga.build",
+    "first_name": null,
+    "last_name": null,
+    "auth_token": "0792f9d0-0b70-4747-93d2-17c6a243df6d",
+    "user_name": "Test User",
+    "mobile": null
+  },
+  "meta": {
+    "code": 10000,
+    "message": "Success"
+  }
+}
+```
+
+Create new account.
+
+### HTTP Request
+
+`POST http://example.com/v2/users/sign_up`
+
+### Parameters
+
+Parameter | Require| Default | Description
+--------- | -------| ------- | -----------
+access_token | true| | Access Token.
+locale | false| en | Localization
+email|true||Email
+password|true||Password
+user_name|true||User Name
+mobile|false||Mobile
+
+
+## Sign In
+
+```ruby
+require 'rest-client'
+
+content = RestClient.post 'http://example.com/v2/users/sign_in',
+  {params: {access_token: '12345', email: 'm2@giga.build', password: '11111111'}}
+```
+
+```json
+
+{
+  "data": {
+    "id": 65,
+    "email": "m2@giga.build",
+    "first_name": null,
+    "last_name": null,
+    "auth_token": "d3248374-64cd-44ca-afcd-b7e2c55e40b2",
+    "user_name": "Test User",
+    "mobile": null
+  },
+  "meta": {
+    "code": 10000,
+    "message": "Success"
+  }
+}
+```
+
+Sign in with email and password
+
+### HTTP Request
+
+`POST http://example.com/v2/users/sign_in`
+
+### Parameters
+
+Parameter | Require| Default | Description
+--------- | -------| ------- | -----------
+access_token | true| | Access Token.
+locale | false| en | Localization
+email|true||Email
+password|true||Password
+
+## Get Profile
+
+```ruby
+require 'rest-client'
+
+content = RestClient.get 'http://example.com/v2/users/profile',
+  {params: {access_token: '12345', auth_token: 'd3248374-64cd-44ca-afcd-b7e2c55e40b2'}}
+```
+
+```json
+
+{
+  "data": {
+    "id": 65,
+    "email": "m2@giga.build",
+    "first_name": null,
+    "last_name": null,
+    "auth_token": "d3248374-64cd-44ca-afcd-b7e2c55e40b2",
+    "user_name": "Test User",
+    "mobile": null
+  },
+  "meta": {
+    "code": 10000,
+    "message": "Success"
+  }
+}
+```
+
+Get user profile with the giving auth token, returned by server.
+
+### HTTP Request
+
+`GET http://example.com/v2/users/profile`
+
+### Parameters
+
+Parameter | Require| Default | Description
+--------- | -------| ------- | -----------
+access_token | true| | Access Token.
+locale | false| en | Localization
+auth_token|true||Auth Token
+
+## Update Profile
+
+```ruby
+require 'rest-client'
+
+content = RestClient.post 'http://example.com/v2/users/profile',
+  {params: {access_token: '12345', auth_token: 'd3248374-64cd-44ca-afcd-b7e2c55e40b2', user_name: '', first_name: '', last_name: '', mobile: '', }}
+```
+
+```json
+
+{
+  "data": {
+    "id": 65,
+    "email": "m2@giga.build",
+    "first_name": null,
+    "last_name": null,
+    "auth_token": "d3248374-64cd-44ca-afcd-b7e2c55e40b2",
+    "user_name": "Test User",
+    "mobile": null
+  },
+  "meta": {
+    "code": 10000,
+    "message": "Success"
+  }
+}
+```
+
+Update profile
+
+### HTTP Request
+
+`POST http://example.com/v2/users/profile`
+
+### Parameters
+
+Parameter | Require| Default | Description
+--------- | -------| ------- | -----------
+access_token | true| | Access Token.
+locale | false| en | Localization
+auth_token|true||Auth Token
+user_name|false||User Name
+first_name|false||First Name
+last_name|false|| Last Name
+mobile|false||Mobile
+
+## Update Password
+
+```ruby
+require 'rest-client'
+
+content = RestClient.post 'http://example.com/v2/users/password',
+  {params: {access_token: '12345', auth_token: 'd3248374-64cd-44ca-afcd-b7e2c55e40b2', old_password: '', new_password: ''}}
+```
+
+```json
+{
+  "meta": {
+    "code": 10000,
+    "message": "Success"
+  }
+}
+```
+
+Update profile
+
+### HTTP Request
+
+`POST http://example.com/v2/users/password`
+
+### Parameters
+
+Parameter | Require| Default | Description
+--------- | -------| ------- | -----------
+access_token | true| | Access Token.
+locale | false| en | Localization
+auth_token|true||Auth Token
+old_password|true||Previous Password
+new_password|true||New Password
 
 # Cities
 
@@ -112,7 +309,7 @@ This endpoint retrieves all available cities.
 
 `GET http://example.com/v2/cities`
 
-### Query Parameters
+### Parameters
 
 Parameter | Require| Default | Description
 --------- | -------| ------- | -----------
@@ -173,7 +370,7 @@ Get all activity cities, grouping by country.
 
 `GET http://example.com/v2/cities/activity`
 
-### Query Parameters
+### Parameters
 
 Parameter | Require| Default | Description
 --------- | -------| ------- | -----------
@@ -246,7 +443,7 @@ Get all locations, can be filtered by city id and location name
 
 `GET http://example.com/v2/locations`
 
-### Query Parameters
+### Parameters
 
 Parameter | Require|  Default | Description
 --------- | ------- | ------- | -----------
@@ -257,8 +454,7 @@ name|falase|| Location name (support fuzzy query, SFQ)
 page|false|1|Page number
 size|false|20|Size per page
 
-
-## Get Location Details
+## Get Location's Details
 
 ```ruby
 content = RestClient.get 'http://example.com/v2/location/45'
@@ -382,15 +578,197 @@ Get location details by ID
 
 
 <aside class="notice">
-* You must replace <code>24</code> with your location ID.
+* You must replace <code>45</code> with your location ID.
 </aside>
 
-### Query Parameters
+### Parameters
 
 Parameter |Require| Default | Description
 --------- | ------- | ------- | -----------
 access_token |true|  | Access Token.
 locale |false| en | Localization
+
+
+## Get Monitor's Detail
+
+```ruby
+require 'rest-client'
+
+content = RestClient.get 'http://example.com/v2/locations',
+  {params: {access_token: '12345', location_id: 45, monitor_id: 28}}
+```
+
+
+```shell
+curl "http://example.com/v2/locations/45/monitors/28?access_token=12345"
+```
+
+```json
+
+{
+  "data": {
+    "id": 64,
+    "name": "Particulate Matter ",
+    "identifier": "30245",
+    "label": "Particulate Matter ",
+    "logo": null,
+    "device_type": "air_advice",
+    "stale": true,
+    "follow": false,
+    "indicator": [
+      "humidity",
+      "co2",
+      "tvoc",
+      "pm2p5"
+    ],
+    "last_reading_time": null,
+    "last_received_at": "2015-04-08 23:33:50",
+    "reading": [
+      {
+        "indicator": "pm2p5",
+        "name": "PM 2.5",
+        "unit": "μg/m³",
+        "value": 32,
+        "level": "good"
+      },
+      {
+        "indicator": "co2",
+        "name": "CO2",
+        "unit": "ppm",
+        "value": null,
+        "level": null
+      },
+      {
+        "indicator": "tvoc",
+        "name": "Total VOC",
+        "unit": "μg/m³",
+        "value": null,
+        "level": null
+      },
+      {
+        "indicator": "humidity",
+        "name": "Humidity",
+        "unit": "%RH",
+        "value": 26,
+        "level": "good"
+      }
+    ]
+  },
+  "meta": {
+    "code": 10000,
+    "message": "Success"
+  }
+}
+```
+
+Get monitor's detail, which binding the specific location
+### HTTP Request
+
+`GET http://example.com/v2/locations/45/monitors/28`
+
+<aside class="notice">
+* You must replace <code>45</code> with your location ID, <code>28</code> with your monitor ID.
+</aside>
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+locale |false| en | Localization
+location_id|true|  | Location ID
+monitor_id|true|| Monitor ID
+
+# Monitor
+## Get Monitor's Detail
+
+```ruby
+require 'rest-client'
+
+content = RestClient.get 'http://example.com/v2/locations',
+  {params: {access_token: '12345', monitor_id: 28}}
+```
+
+
+```shell
+curl "http://example.com/v2/monitors/28?access_token=12345"
+```
+
+```json
+
+{
+  "data": {
+    "id": 64,
+    "name": "Particulate Matter ",
+    "identifier": "30245",
+    "label": "Particulate Matter ",
+    "logo": null,
+    "device_type": "air_advice",
+    "stale": true,
+    "follow": false,
+    "indicator": [
+      "humidity",
+      "co2",
+      "tvoc",
+      "pm2p5"
+    ],
+    "last_reading_time": null,
+    "last_received_at": "2015-04-08 23:33:50",
+    "reading": [
+      {
+        "indicator": "pm2p5",
+        "name": "PM 2.5",
+        "unit": "μg/m³",
+        "value": 32,
+        "level": "good"
+      },
+      {
+        "indicator": "co2",
+        "name": "CO2",
+        "unit": "ppm",
+        "value": null,
+        "level": null
+      },
+      {
+        "indicator": "tvoc",
+        "name": "Total VOC",
+        "unit": "μg/m³",
+        "value": null,
+        "level": null
+      },
+      {
+        "indicator": "humidity",
+        "name": "Humidity",
+        "unit": "%RH",
+        "value": 26,
+        "level": "good"
+      }
+    ]
+  },
+  "meta": {
+    "code": 10000,
+    "message": "Success"
+  }
+}
+```
+
+Get monitor's detail
+### HTTP Request
+
+`GET http://example.com/v2/monitors/28`
+
+<aside class="notice">
+* You must replace <code>28</code> with your monitor ID.
+</aside>
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+locale |false| en | Localization
+location_id|true|  | Location ID
+monitor_id|true|| Monitor ID
 
 
 # Readings
@@ -583,13 +961,13 @@ curl "http://example.com/v2/cities?access_token=12345&location_id=70&monitor_id=
 }
 ```
 
-This endpoint retrieves all the average readings of spec location or monitor.
+Retrieves all the average readings of specific location or monitor.
 
 ### HTTP Request
 
 `GET http://example.com/v2/readings`
 
-### Query Parameters
+### Parameters
 
 Parameter | Require| Default | Description
 --------- | -------| ------- | -----------
