@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Document for QLEAR (v2.0) - Build: 2016-04-05 17:07:09</title>
+    <title>API Document for QLEAR (v2.0) - Build: 2016-04-12 10:30:46</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -942,6 +942,12 @@
 <td>en</td>
 <td>Localization</td>
 </tr>
+<tr>
+<td>unlock_token</td>
+<td>false</td>
+<td></td>
+<td>Unlock Token</td>
+</tr>
 </tbody></table>
 
 <h2 id="get-monitor-39-s-detail">Get Monitor&rsquo;s Detail</h2>
@@ -1058,6 +1064,170 @@
 <td>true</td>
 <td></td>
 <td>Monitor ID</td>
+</tr>
+</tbody></table>
+
+<h2 id="unlock-location">Unlock Location</h2>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'http://example.com/v2/locations/45/unlock'</span><span class="p">,</span>
+  <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">password: </span><span class="s1">'123456'</span><span class="p">}}</span>
+</code></pre>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Glumac"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">800</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shanghai"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dn-reset.qbox.me/uploads/location/logo/dc7f364a-448e-4ec0-8996-dda793b938c8.png"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"theme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dn-reset.qbox.me/uploads/location/theme/0abd7419-9667-43de-bd10-9fa95add6db9.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"indoor"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"stale"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"follow"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"primary_indicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pm2p5"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-23 17:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"indoor_reading"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"indicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pm2p5"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PM 2.5"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"μg/m³"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"indicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"co2"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CO2"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ppm"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">360</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"indicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tvoc"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Total VOC"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mg/m³"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.04</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"indicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"temperature"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Temperature"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"°C"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"indicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"humidity"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Humidity"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"%RH"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">36.73</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"outdoor_reading"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"indicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pm2p5"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PM 2.5"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"μg/m³"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"moderate"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"indicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"temperature"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Temperature"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"°C"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"indicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"humidity"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Humidity"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"%RH"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"bto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.8"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"monitors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"PM 2.5"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"certifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESET Certified"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dn-reset.qbox.me/uploads/certification/logo/7f9180e3-916f-465d-9a62-3b7e3a86b279.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESET"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WELL Certified"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dn-reset.qbox.me/uploads/certification/logo/0e283e52-6a29-427e-ad1b-dbfc75440df0.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LEED Certified"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dn-reset.qbox.me/uploads/certification/logo/a4c9c016-ee81-413c-a48a-47e5d3bcda5a.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LBC Certified"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dn-reset.qbox.me/uploads/certification/logo/c3b0c543-c194-45ff-80ed-e9a1f2cf30bb.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Unlock location with the giving password</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://example.com/v2/locations/45/unlock</code></p>
+
+<aside class="notice">
+* You must replace <code>45</code> with your location ID.
+</aside>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Require</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>false</td>
+<td>Access Token.</td>
+</tr>
+<tr>
+<td>auth_token</td>
+<td>false</td>
+<td></td>
+<td>Auth Token</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>false</td>
+<td>en</td>
+<td>Localization</td>
+</tr>
+<tr>
+<td>location_id</td>
+<td>true</td>
+<td></td>
+<td>Location ID</td>
+</tr>
+<tr>
+<td>password</td>
+<td>true</td>
+<td></td>
+<td>Password</td>
 </tr>
 </tbody></table>
 
@@ -1182,13 +1352,100 @@
 
 <h1 id="readings">Readings</h1>
 
-<h2 id="get-reading-data">Get Reading Data</h2>
+<h2 id="get-all-data">Get All Data</h2>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
 
 <span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/readings'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">location_id: </span><span class="s1">'70'</span><span class="p">,</span> <span class="ss">monitor_id: </span><span class="s1">'12,25'</span><span class="p">,</span> <span class="ss">begin_time: </span><span class="s1">'2016-03-29 15:00:00'</span><span class="p">,</span> <span class="ss">end_time: </span><span class="s1">'2016-03-30 15:00:00'</span><span class="p">}}</span>
 </code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/v2/cities?access_token=12345&amp;location_id=70&amp;monitor_id=12,25&amp;begin_time=2016-03-29 15:00:00&amp;end_time=2016-03-30 15:00:00"</span>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"reading_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-04-29 15:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pm2p5"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tvoc"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"co2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"humidity"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30834411-f7db-486a-840b-21eb66b2699e"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auth_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"348f5965-34c8-429e-a6ed-1c10e7d56d5b"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Retrieves all the data of specific location or monitor.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://example.com/v2/readings</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Require</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td></td>
+<td>Access Token.</td>
+</tr>
+<tr>
+<td>auth_token</td>
+<td>true</td>
+<td></td>
+<td>Auth Token</td>
+</tr>
+<tr>
+<td>location_id</td>
+<td>false</td>
+<td></td>
+<td>Location id</td>
+</tr>
+<tr>
+<td>monitor_id</td>
+<td>false</td>
+<td></td>
+<td>Monitor id</td>
+</tr>
+<tr>
+<td>begin_time</td>
+<td>false</td>
+<td></td>
+<td>Begin time for query</td>
+</tr>
+<tr>
+<td>end_time</td>
+<td>false</td>
+<td></td>
+<td>End time for query</td>
+</tr>
+<tr>
+<td>tab</td>
+<td>false</td>
+<td>hour</td>
+<td>Data type. Available Tab: hour, raw</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-graph-data">Get Graph Data</h2>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/readings/graph'</span><span class="p">,</span>
+  <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">location_id: </span><span class="s1">'70'</span><span class="p">,</span> <span class="ss">monitor_id: </span><span class="s1">'12,25'</span><span class="p">,</span> <span class="ss">begin_time: </span><span class="s1">'2016-03-29 15:00:00'</span><span class="p">,</span> <span class="ss">end_time: </span><span class="s1">'2016-03-30 15:00:00'</span><span class="p">}}</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1362,11 +1619,11 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Retrieves all the average readings of specific location or monitor.</p>
+<p>Retrieves all the average readings of specific location or monitor for graph.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/readings</code></p>
+<p><code class="prettyprint">GET http://example.com/v2/readings/graph</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -1422,6 +1679,34 @@
 </tr>
 </tbody></table>
 
+<h1 id="changelog">Changelog</h1>
+
+<h2 id="2016-04-11">2016-04-11</h2>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Api</th>
+<th>Content</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Updated</td>
+<td>/v2/locations/{location_id}</td>
+<td>add unlock_token</td>
+</tr>
+<tr>
+<td>Added</td>
+<td>/v2/locations/{location_id}/unlock</td>
+<td>new api for unlocking location</td>
+</tr>
+<tr>
+<td>Added</td>
+<td>/v2/readings</td>
+<td>for readings list</td>
+</tr>
+</tbody></table>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
@@ -1432,7 +1717,7 @@
 
 
     <div style="text-align: center; margin-top: 25px;">
-      <small>@2016 GIGA, Version: 2.0. Build: 2016-04-05 17:07:09</small>
+      <small>@2016 GIGA, Version: 2.0. Build: 2016-04-12 10:30:46</small>
     </div>
   </body>
 </html>
