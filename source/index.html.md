@@ -1288,6 +1288,62 @@ indicator|false|pm2p5|Available indicators: pm2p5, pm10, co2, co, tvoc, hcho, hu
 begin_time|false|Time.now - 1.day|Begin time for query
 end_time|false|Time.now|End time for query
 
+# History
+
+## Get All Histories
+
+
+```ruby
+require 'rest-client'
+
+content = RestClient.get 'http://example.com/v2/histories',
+  {params: {access_token: '12345', location_id: '70', monitor_id: '12'}}
+```
+
+```json
+{
+  "data": [
+    {
+      "user_name": "Martin Xu",
+      "created_at": "2015-08-11 11:02:51",
+      "target": "certification",
+      "event": "create",
+      "changes": "{:id=>[\"1\"], :name=>[\"Reset\"]}"
+    },
+    ...
+  ],
+  "meta": {
+    "total_count": 70,
+    "total_pages": 4,
+    "current_page": 1,
+    "last_page": false,
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e"
+  }
+}
+```
+
+Get histories of location or monitor.
+
+### HTTP Request
+
+`GET http://example.com/v2/histories`
+
+### Parameters
+
+Parameter | Require| Default | Description
+--------- | -------| ------- | -----------
+access_token | true| | Access Token.
+auth_token|true||Auth Token
+location_id | true|  | Location id
+monitor_id|false||Monitor id
+begin_time|false||Begin time for query
+end_time|false||End time for query
+page|false|1|Page number
+size|false|20|Size per page
+
+
 # Changelog
 
 ## 2016-04-12
@@ -1295,6 +1351,7 @@ Status|Api|Content|
  -------| ------- | -----------
 Updated|/v2/monitors/{monitor_id}|rename stale to status, returned by server
 Added|/v2/locations/{location_id}/monitors|new api for getting all monitors of the location
+Added|/v2/histories|new api for history
 
 ## 2016-04-11
 
