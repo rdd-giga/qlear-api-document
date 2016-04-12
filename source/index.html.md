@@ -480,7 +480,7 @@ curl "http://example.com/v2/locations/45"
     "logo": "https://dn-reset.qbox.me/uploads/location/logo/dc7f364a-448e-4ec0-8996-dda793b938c8.png",
     "theme": "https://dn-reset.qbox.me/uploads/location/theme/0abd7419-9667-43de-bd10-9fa95add6db9.jpg",
     "category": "indoor",
-    "stale": false,
+    "status": "stale",
     "follow": false,
     "primary_indicator": "pm2p5",
     "last_updated_at": "2016-03-23 17:00:00",
@@ -592,6 +592,117 @@ access_token |true|  | Access Token.
 auth_token|true||Auth Token
 locale |false| en | Localization
 unlock_token|false||Unlock Token
+
+## Get All Monitor
+
+```ruby
+require 'rest-client'
+
+content = RestClient.get 'http://example.com/v2/locations/48/monitors',
+  {params: {access_token: '12345'}}
+```
+
+```json
+{
+  "data": [
+    {
+      "id": 2848,
+      "name": "3rd Floor",
+      "identifier": "IPM251546036",
+      "label": "3rd Floor ",
+      "logo": null,
+      "device_type": "air_assure",
+      "status": "ok",
+      "follow": false,
+      "indicator": [
+        "pm2p5"
+      ],
+      "last_reading_time": "2016-04-12 11:20:31",
+      "last_received_at": "2016-04-12 11:20:31",
+      "reading": [
+        {
+          "indicator": "pm2p5",
+          "name": "PM 2.5",
+          "unit": "μg/m³",
+          "value": 9,
+          "level": "good"
+        }
+      ]
+    },
+    {
+      "id": 2847,
+      "name": "4th Floor",
+      "identifier": "IPM251546018",
+      "label": "4th Floor ",
+      "logo": null,
+      "device_type": "air_assure",
+      "status": "ok",
+      "follow": false,
+      "indicator": [
+        "pm2p5"
+      ],
+      "last_reading_time": "2016-04-12 11:20:33",
+      "last_received_at": "2016-04-12 11:20:33",
+      "reading": [
+        {
+          "indicator": "pm2p5",
+          "name": "PM 2.5",
+          "unit": "μg/m³",
+          "value": 16,
+          "level": "good"
+        }
+      ]
+    },
+    {
+      "id": 2849,
+      "name": "7th Floor",
+      "identifier": "IPM251546040",
+      "label": "7th Floor ",
+      "logo": null,
+      "device_type": "air_assure",
+      "status": "ok",
+      "follow": false,
+      "indicator": [
+        "pm2p5"
+      ],
+      "last_reading_time": "2016-04-12 11:23:51",
+      "last_received_at": "2016-04-12 11:23:52",
+      "reading": [
+        {
+          "indicator": "pm2p5",
+          "name": "PM 2.5",
+          "unit": "μg/m³",
+          "value": 16,
+          "level": "good"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "eb98298f-fc85-49b9-ae6c-322bab7ad7b4"
+  }
+}
+```
+
+Get all monitors of the current location
+### HTTP Request
+
+`GET http://example.com/v2/locations/45/monitors`
+
+<aside class="notice">
+* You must replace <code>45</code> with your location ID.
+</aside>
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|false||Auth Token
+locale |false| en | Localization
+location_id|true|  | Location ID
 
 
 ## Get Monitor's Detail
@@ -707,7 +818,7 @@ content = RestClient.post 'http://example.com/v2/locations/45/unlock',
     "logo": "https://dn-reset.qbox.me/uploads/location/logo/dc7f364a-448e-4ec0-8996-dda793b938c8.png",
     "theme": "https://dn-reset.qbox.me/uploads/location/theme/0abd7419-9667-43de-bd10-9fa95add6db9.jpg",
     "category": "indoor",
-    "stale": false,
+    "status": "stale",
     "follow": false,
     "primary_indicator": "pm2p5",
     "last_updated_at": "2016-03-23 17:00:00",
@@ -851,7 +962,7 @@ curl "http://example.com/v2/monitors/28?access_token=12345"
     "label": "Particulate Matter ",
     "logo": null,
     "device_type": "air_advice",
-    "stale": true,
+    "status": "stale",
     "follow": false,
     "indicator": [
       "humidity",
@@ -972,6 +1083,8 @@ monitor_id|false||Monitor id
 begin_time|false||Begin time for query
 end_time|false||End time for query
 tab|false|hour|Data type. Available Tab: hour, raw
+page|false|1|Page number
+size|false|20|Size per page
 
 
 ## Get Graph Data
