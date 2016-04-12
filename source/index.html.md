@@ -591,6 +591,7 @@ Parameter |Require| Default | Description
 access_token |true|  | Access Token.
 auth_token|true||Auth Token
 locale |false| en | Localization
+unlock_token|false||Unlock Token
 
 
 ## Get Monitor's Detail
@@ -683,6 +684,141 @@ auth_token|true||Auth Token
 locale |false| en | Localization
 location_id|true|  | Location ID
 monitor_id|true|| Monitor ID
+
+## Unlock Location
+
+```ruby
+require 'rest-client'
+
+content = RestClient.post 'http://example.com/v2/locations/45/unlock',
+  {params: {access_token: '12345', password: '123456'}}
+```
+
+```json
+
+{
+  "data": {
+    "id": 24,
+    "name": "Glumac",
+    "desc": "",
+    "city_id": 800,
+    "city_name": "Shanghai",
+    "station_name": null,
+    "logo": "https://dn-reset.qbox.me/uploads/location/logo/dc7f364a-448e-4ec0-8996-dda793b938c8.png",
+    "theme": "https://dn-reset.qbox.me/uploads/location/theme/0abd7419-9667-43de-bd10-9fa95add6db9.jpg",
+    "category": "indoor",
+    "stale": false,
+    "follow": false,
+    "primary_indicator": "pm2p5",
+    "last_updated_at": "2016-03-23 17:00:00",
+    "indoor_reading": [
+      {
+        "indicator": "pm2p5",
+        "name": "PM 2.5",
+        "unit": "μg/m³",
+        "value": 13,
+        "level": "good"
+      },
+      {
+        "indicator": "co2",
+        "name": "CO2",
+        "unit": "ppm",
+        "value": 360,
+        "level": "good"
+      },
+      {
+        "indicator": "tvoc",
+        "name": "Total VOC",
+        "unit": "mg/m³",
+        "value": 0.04,
+        "level": "good"
+      },
+      {
+        "indicator": "temperature",
+        "name": "Temperature",
+        "unit": "°C",
+        "value": 23,
+        "level": null
+      },
+      {
+        "indicator": "humidity",
+        "name": "Humidity",
+        "unit": "%RH",
+        "value": 36.73,
+        "level": "good"
+      }
+    ],
+    "outdoor_reading": [
+      {
+        "indicator": "pm2p5",
+        "name": "PM 2.5",
+        "unit": "μg/m³",
+        "value": 37,
+        "level": "moderate"
+      },
+      {
+        "indicator": "temperature",
+        "name": "Temperature",
+        "unit": "°C",
+        "value": null,
+        "level": null
+      },
+      {
+        "indicator": "humidity",
+        "name": "Humidity",
+        "unit": "%RH",
+        "value": null,
+        "level": null
+      }
+    ],
+    "bto": "2.8",
+    "monitors": [
+      "PM 2.5"
+    ],
+    "certifications": [
+      {
+        "name": "RESET Certified",
+        "logo": "https://dn-reset.qbox.me/uploads/certification/logo/7f9180e3-916f-465d-9a62-3b7e3a86b279.png",
+        "desc": "RESET"
+      },
+      {
+        "name": "WELL Certified",
+        "logo": "https://dn-reset.qbox.me/uploads/certification/logo/0e283e52-6a29-427e-ad1b-dbfc75440df0.png",
+        "desc": ""
+      },
+      {
+        "name": "LEED Certified",
+        "logo": "https://dn-reset.qbox.me/uploads/certification/logo/a4c9c016-ee81-413c-a48a-47e5d3bcda5a.png",
+        "desc": ""
+      },
+      {
+        "name": "LBC Certified",
+        "logo": "https://dn-reset.qbox.me/uploads/certification/logo/c3b0c543-c194-45ff-80ed-e9a1f2cf30bb.png",
+        "desc": ""
+      }
+    ]
+  }
+}
+```
+
+Unlock location with the giving password
+### HTTP Request
+
+`POST http://example.com/v2/locations/45/unlock`
+
+<aside class="notice">
+* You must replace <code>45</code> with your location ID.
+</aside>
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|false||Auth Token
+locale |false| en | Localization
+location_id|true|  | Location ID
+password|true||Password
 
 # Monitor
 ## Get Monitor's Detail
@@ -779,7 +915,7 @@ monitor_id|true|| Monitor ID
 
 # Readings
 
-## Get Reading Data
+## Get All Data
 
 
 ```ruby
@@ -789,9 +925,57 @@ content = RestClient.get 'http://example.com/v2/readings',
   {params: {access_token: '12345', location_id: '70', monitor_id: '12,25', begin_time: '2016-03-29 15:00:00', end_time: '2016-03-30 15:00:00'}}
 ```
 
+```json
+{
+  "data": [
+    {
+      "reading_time": "2015-04-29 15:00:00",
+      "pm2p5": 32,
+      "tvoc": null,
+      "co2": null,
+      "humidity": 26
+    }
+  ],
+  "meta": {
+    "total_count": 5,
+    "total_pages": 5,
+    "current_page": 1,
+    "last_page": false,
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
 
-```shell
-curl "http://example.com/v2/cities?access_token=12345&location_id=70&monitor_id=12,25&begin_time=2016-03-29 15:00:00&end_time=2016-03-30 15:00:00"
+Retrieves all the data of specific location or monitor.
+
+### HTTP Request
+
+`GET http://example.com/v2/readings`
+
+### Parameters
+
+Parameter | Require| Default | Description
+--------- | -------| ------- | -----------
+access_token | true| | Access Token.
+auth_token|true||Auth Token
+location_id | false|  | Location id
+monitor_id|false||Monitor id
+begin_time|false||Begin time for query
+end_time|false||End time for query
+tab|false|hour|Data type. Available Tab: hour, raw
+
+
+## Get Graph Data
+
+
+```ruby
+require 'rest-client'
+
+content = RestClient.get 'http://example.com/v2/readings/graph',
+  {params: {access_token: '12345', location_id: '70', monitor_id: '12,25', begin_time: '2016-03-29 15:00:00', end_time: '2016-03-30 15:00:00'}}
 ```
 
 ```json
@@ -967,11 +1151,11 @@ curl "http://example.com/v2/cities?access_token=12345&location_id=70&monitor_id=
 }
 ```
 
-Retrieves all the average readings of specific location or monitor.
+Retrieves all the average readings of specific location or monitor for graph.
 
 ### HTTP Request
 
-`GET http://example.com/v2/readings`
+`GET http://example.com/v2/readings/graph`
 
 ### Parameters
 
@@ -984,4 +1168,13 @@ monitor_id|false||Monitor id, use comma if more than one, eg: 12,25
 indicator|false|pm2p5|Available indicators: pm2p5, pm10, co2, co, tvoc, hcho, humidity, temperature. Use comma if more than one.
 begin_time|false|Time.now - 1.day|Begin time for query
 end_time|false|Time.now|End time for query
+
+# Changelog
+
+## 2016-04-11
+Status|Api|Content|
+ -------| ------- | -----------
+Updated|/v2/locations/{location_id}|add unlock_token
+Added|/v2/locations/{location_id}/unlock|new api for unlocking location
+Added|/v2/readings|for readings list
 
