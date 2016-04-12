@@ -1174,7 +1174,7 @@ end_time|false|Time.now|End time for query
 ## 2016-04-11
 Status|Api|Content|
  -------| ------- | -----------
-Updated|/v2/locations/{location_id}|add unlock_token
+Updated|/v2/locations/{location_id}|new parameter for unlock_token
 Added|/v2/locations/{location_id}/unlock|new api for unlocking location
-Added|/v2/readings|for readings list
+Added|/v2/readings|new api for all readings
 
