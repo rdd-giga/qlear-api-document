@@ -618,7 +618,7 @@ curl "http://example.com/v2/locations/45/monitors/28?access_token=12345"
     "label": "Particulate Matter ",
     "logo": null,
     "device_type": "air_advice",
-    "stale": true,
+    "status": "stale",
     "follow": false,
     "indicator": [
       "humidity",
@@ -1177,7 +1177,14 @@ end_time|false|Time.now|End time for query
 
 # Changelog
 
+## 2016-04-12
+Status|Api|Content|
+ -------| ------- | -----------
+Updated|/v2/monitors/{monitor_id}|rename stale to status, returned by server
+Added|/v2/locations/{location_id}/monitors|new api for getting all monitors of the location
+
 ## 2016-04-11
+
 Status|Api|Content|
  -------| ------- | -----------
 Updated|/v2/locations/{location_id}|new parameter for unlock_token
