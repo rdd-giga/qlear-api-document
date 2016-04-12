@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Document for QLEAR (v2.0) - Build: 2016-04-12 11:26:24</title>
+    <title>API Document for QLEAR (v2.0) - Build: 2016-04-12 11:45:49</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -1832,6 +1832,103 @@
 </tr>
 </tbody></table>
 
+<h1 id="history">History</h1>
+
+<h2 id="get-all-histories">Get All Histories</h2>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/histories'</span><span class="p">,</span>
+  <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">location_id: </span><span class="s1">'70'</span><span class="p">,</span> <span class="ss">monitor_id: </span><span class="s1">'12'</span><span class="p">}}</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martin Xu"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-11 11:02:51"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"certification"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"changes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{:id=&gt;[\"1\"], :name=&gt;[\"Reset\"]}"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30834411-f7db-486a-840b-21eb66b2699e"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Get histories of location or monitor.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://example.com/v2/histories</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Require</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td></td>
+<td>Access Token.</td>
+</tr>
+<tr>
+<td>auth_token</td>
+<td>true</td>
+<td></td>
+<td>Auth Token</td>
+</tr>
+<tr>
+<td>location_id</td>
+<td>true</td>
+<td></td>
+<td>Location id</td>
+</tr>
+<tr>
+<td>monitor_id</td>
+<td>false</td>
+<td></td>
+<td>Monitor id</td>
+</tr>
+<tr>
+<td>begin_time</td>
+<td>false</td>
+<td></td>
+<td>Begin time for query</td>
+</tr>
+<tr>
+<td>end_time</td>
+<td>false</td>
+<td></td>
+<td>End time for query</td>
+</tr>
+<tr>
+<td>page</td>
+<td>false</td>
+<td>1</td>
+<td>Page number</td>
+</tr>
+<tr>
+<td>size</td>
+<td>false</td>
+<td>20</td>
+<td>Size per page</td>
+</tr>
+</tbody></table>
+
 <h1 id="changelog">Changelog</h1>
 
 <h2 id="2016-04-12">2016-04-12</h2>
@@ -1852,6 +1949,11 @@
 <td>Added</td>
 <td>/v2/locations/{location_id}/monitors</td>
 <td>new api for getting all monitors of the location</td>
+</tr>
+<tr>
+<td>Added</td>
+<td>/v2/histories</td>
+<td>new api for history</td>
 </tr>
 </tbody></table>
 
@@ -1891,7 +1993,7 @@
 
 
     <div style="text-align: center; margin-top: 25px;">
-      <small>@2016 GIGA, Version: 2.0. Build: 2016-04-12 11:26:24</small>
+      <small>@2016 GIGA, Version: 2.0. Build: 2016-04-12 11:45:49</small>
     </div>
   </body>
 </html>
