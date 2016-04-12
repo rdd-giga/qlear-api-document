@@ -797,6 +797,12 @@ content = RestClient.post 'http://example.com/v2/locations/45/unlock',
         "desc": ""
       }
     ]
+  },
+  "meta": {
+    "code":10000,
+    "message":"Success",
+    "access_token":"30834411-f7db-486a-840b-21eb66b2699e",
+    "unlock_token":"rvanyAZ0OQk13fWHL0X6cyY3gF8tuxIRx+2y20DXgto="
   }
 }
 ```
