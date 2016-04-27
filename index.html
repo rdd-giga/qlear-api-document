@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Document for QLEAR (v2.0) - Build: 2016-04-28 02:27:58</title>
+    <title>API Document for QLEAR (v2.0) - Build: 2016-04-28 02:30:27</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -137,7 +137,7 @@
 <p>Welcome to the QLEAR API! You can use our API to access QLEAR API endpoints, which can get all informations about user, location, monitor and reading data etc.</p>
 
 <h1 id="access-token">Access Token</h1>
-<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/ping'</span><span class="p">,</span>
+<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/ping'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">}}</span>
 </code></pre>
 
@@ -172,7 +172,7 @@
 <h2 id="sign-up">Sign Up</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'http://example.com/v2/users/sign_up'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://example.com/v2/users/sign_up'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">email: </span><span class="s1">'m2@giga.build'</span><span class="p">,</span> <span class="ss">password: </span><span class="s1">'11111111'</span><span class="p">,</span> <span class="ss">user_name: </span><span class="s1">'Test User'</span><span class="p">,</span> <span class="ss">last_name: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">first_name: </span><span class="s1">''</span><span class="p">}}</span>
 </code></pre>
 <pre class="highlight json"><code><span class="w">
@@ -197,7 +197,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://example.com/v2/users/sign_up</code></p>
+<p><code class="prettyprint">POST https://example.com/v2/users/sign_up</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -250,7 +250,7 @@
 <h2 id="sign-in">Sign In</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'http://example.com/v2/users/sign_in'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://example.com/v2/users/sign_in'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">email: </span><span class="s1">'m2@giga.build'</span><span class="p">,</span> <span class="ss">password: </span><span class="s1">'11111111'</span><span class="p">}}</span>
 </code></pre>
 <pre class="highlight json"><code><span class="w">
@@ -275,7 +275,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://example.com/v2/users/sign_in</code></p>
+<p><code class="prettyprint">POST https://example.com/v2/users/sign_in</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -316,7 +316,7 @@
 <h2 id="get-profile">Get Profile</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/users/profile'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/users/profile'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">'d3248374-64cd-44ca-afcd-b7e2c55e40b2'</span><span class="p">}}</span>
 </code></pre>
 <pre class="highlight json"><code><span class="w">
@@ -341,7 +341,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/users/profile</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/users/profile</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -376,7 +376,7 @@
 <h2 id="update-profile">Update Profile</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'http://example.com/v2/users/profile'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://example.com/v2/users/profile'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">'d3248374-64cd-44ca-afcd-b7e2c55e40b2'</span><span class="p">,</span> <span class="ss">user_name: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">first_name: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">last_name: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">mobile: </span><span class="s1">''</span><span class="p">,</span> <span class="p">}}</span>
 </code></pre>
 <pre class="highlight json"><code><span class="w">
@@ -401,7 +401,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://example.com/v2/users/profile</code></p>
+<p><code class="prettyprint">POST https://example.com/v2/users/profile</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -460,7 +460,7 @@
 <h2 id="update-password">Update Password</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'http://example.com/v2/users/password'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://example.com/v2/users/password'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">'d3248374-64cd-44ca-afcd-b7e2c55e40b2'</span><span class="p">,</span> <span class="ss">old_password: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">new_password: </span><span class="s1">''</span><span class="p">}}</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -475,7 +475,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://example.com/v2/users/password</code></p>
+<p><code class="prettyprint">POST https://example.com/v2/users/password</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -524,10 +524,10 @@
 <h2 id="get-all-cities">Get All Cities</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/cities'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/cities'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">}}</span>
 </code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/v2/cities?access_token=12345"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://example.com/v2/cities?access_token=12345"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="w">
 </span><span class="p">{</span><span class="w">
@@ -561,7 +561,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/cities</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/cities</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -608,10 +608,10 @@
 <h2 id="get-activity-cities">Get Activity Cities</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/cities/activity'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/cities/activity'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">}}</span>
 </code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/v2/cities/activity?access_token=12345"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://example.com/v2/cities/activity?access_token=12345"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -648,7 +648,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/cities/activity</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/cities/activity</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -685,10 +685,10 @@
 <h2 id="get-all-locations">Get All Locations</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/locations'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/locations'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">per: </span><span class="mi">2</span><span class="p">,</span> <span class="ss">page: </span><span class="mi">2</span><span class="p">}}</span>
 </code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/v2/locations?access_token=12345&amp;per=2&amp;page=2"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://example.com/v2/locations?access_token=12345&amp;per=2&amp;page=2"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="w">
 </span><span class="p">{</span><span class="w">
@@ -737,7 +737,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/locations</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/locations</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -794,9 +794,9 @@
 </tbody></table>
 
 <h2 id="get-location-39-s-details">Get Location&rsquo;s Details</h2>
-<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/location/45'</span>
+<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/location/45'</span>
 </code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/v2/locations/45"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://example.com/v2/locations/45"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="w">
 </span><span class="p">{</span><span class="w">
@@ -908,7 +908,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/locations/45</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/locations/45</code></p>
 
 <aside class="notice">
 * You must replace <code>45</code> with your location ID.
@@ -953,7 +953,7 @@
 <h2 id="add-following">Add Following</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'http://example.com/v2/followings'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://example.com/v2/followings'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">location_id: </span><span class="s1">''</span><span class="p">}}</span>
 </code></pre>
 
@@ -974,7 +974,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://example.com/v2/followings</code></p>
+<p><code class="prettyprint">POST https://example.com/v2/followings</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -1015,7 +1015,7 @@
 <h2 id="destroy-following">Destroy Following</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">delete</span> <span class="s1">'http://example.com/v2/followings/{location_id}'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">delete</span> <span class="s1">'https://example.com/v2/followings/{location_id}'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">location_id: </span><span class="s1">''</span><span class="p">}}</span>
 </code></pre>
 
@@ -1036,7 +1036,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE http://example.com/v2/followings/{location_id}</code></p>
+<p><code class="prettyprint">DELETE https://example.com/v2/followings/{location_id}</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -1077,7 +1077,7 @@
 <h2 id="get-all-monitor">Get All Monitor</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/locations/48/monitors'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/locations/48/monitors'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">}}</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -1167,7 +1167,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/locations/45/monitors</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/locations/45/monitors</code></p>
 
 <aside class="notice">
 * You must replace <code>45</code> with your location ID.
@@ -1212,10 +1212,10 @@
 <h2 id="get-monitor-39-s-detail">Get Monitor&rsquo;s Detail</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/locations'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/locations'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">location_id: </span><span class="mi">45</span><span class="p">,</span> <span class="ss">monitor_id: </span><span class="mi">28</span><span class="p">}}</span>
 </code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/v2/locations/45/monitors/28?access_token=12345"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://example.com/v2/locations/45/monitors/28?access_token=12345"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="w">
 </span><span class="p">{</span><span class="w">
@@ -1278,7 +1278,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/locations/45/monitors/28</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/locations/45/monitors/28</code></p>
 
 <aside class="notice">
 * You must replace <code>45</code> with your location ID, <code>28</code> with your monitor ID.
@@ -1329,7 +1329,7 @@
 <h2 id="unlock-location">Unlock Location</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'http://example.com/v2/locations/45/unlock'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://example.com/v2/locations/45/unlock'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">password: </span><span class="s1">'123456'</span><span class="p">}}</span>
 </code></pre>
 <pre class="highlight json"><code><span class="w">
@@ -1448,7 +1448,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://example.com/v2/locations/45/unlock</code></p>
+<p><code class="prettyprint">POST https://example.com/v2/locations/45/unlock</code></p>
 
 <aside class="notice">
 * You must replace <code>45</code> with your location ID.
@@ -1499,7 +1499,7 @@
 <h2 id="get-sharings">Get Sharings</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/locations/28/sharings'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/locations/28/sharings'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">}}</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -1536,7 +1536,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/locations/28/sharings</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/locations/28/sharings</code></p>
 
 <aside class="notice">
 * You must replace <code>28</code> with your location ID.
@@ -1581,7 +1581,7 @@
 <h2 id="add-sharing">Add Sharing</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'http://example.com/v2/locations/28/sharings'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://example.com/v2/locations/28/sharings'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">code: </span><span class="s1">'TITCTA-6H3J02D0'</span><span class="p">,</span> <span class="ss">permission: </span><span class="s1">'read_only'</span><span class="p">}}</span>
 </code></pre>
 
@@ -1615,7 +1615,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://example.com/v2/locations/28/sharings</code></p>
+<p><code class="prettyprint">POST https://example.com/v2/locations/28/sharings</code></p>
 
 <aside class="notice">
 * You must replace <code>28</code> with your location ID.
@@ -1671,7 +1671,7 @@
 
 <h2 id="destroy-sharing">Destroy Sharing</h2>
 <pre class="highlight ruby"><code>
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">delete</span> <span class="s1">'http://example.com/v2/locations/28/sharings/{id}'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">delete</span> <span class="s1">'https://example.com/v2/locations/28/sharings/{id}'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">id: </span><span class="s1">''</span><span class="p">}}</span>
 </code></pre>
 
@@ -1692,7 +1692,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE http://example.com/v2/locations/28/sharings/{id}</code></p>
+<p><code class="prettyprint">DELETE https://example.com/v2/locations/28/sharings/{id}</code></p>
 
 <aside class="notice">
 * You must replace <code>28</code> with your location ID.
@@ -1742,7 +1742,7 @@
 
 <h2 id="get-notifications">Get Notifications</h2>
 <pre class="highlight ruby"><code>
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/locations/28/notifications'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/locations/28/notifications'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">''</span><span class="p">}}</span>
 </code></pre>
 
@@ -1792,7 +1792,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/locations/28/notifications</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/locations/28/notifications</code></p>
 
 <aside class="notice">
 * You must replace <code>28</code> with your location ID.
@@ -1836,7 +1836,7 @@
 
 <h2 id="create-update-notifications">Create/Update Notifications</h2>
 <pre class="highlight ruby"><code>
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'http://example.com/v2/locations/28/notifications'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://example.com/v2/locations/28/notifications'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">''</span><span class="p">}}</span>
 </code></pre>
 
@@ -1857,7 +1857,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://example.com/v2/locations/28/notifications</code></p>
+<p><code class="prettyprint">POST https://example.com/v2/locations/28/notifications</code></p>
 
 <aside class="notice">
 * You must replace <code>28</code> with your location ID.
@@ -1958,7 +1958,7 @@
 <h2 id="get-monitor-39-s-detail">Get Monitor&rsquo;s Detail</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/monitors/28'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/monitors/28'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">}}</span>
 </code></pre>
 <pre class="highlight json"><code><span class="w">
@@ -2022,7 +2022,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/monitors/28</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/monitors/28</code></p>
 
 <aside class="notice">
 * You must replace <code>28</code> with your monitor ID.
@@ -2071,7 +2071,7 @@
 </tbody></table>
 
 <h2 id="update-monitor">Update Monitor</h2>
-<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'http://example.com/v2/monitors/28'</span><span class="p">,</span>
+<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://example.com/v2/monitors/28'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">}}</span>
 </code></pre>
 
@@ -2105,7 +2105,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://example.com/v2/monitors/28</code></p>
+<p><code class="prettyprint">POST https://example.com/v2/monitors/28</code></p>
 
 <aside class="notice">
 * You must replace <code>28</code> with your monitor ID.
@@ -2210,7 +2210,7 @@
 <h2 id="add-following">Add Following</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'http://example.com/v2/followings'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://example.com/v2/followings'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">location_id: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">monitor_id: </span><span class="s1">''</span><span class="p">}}</span>
 </code></pre>
 
@@ -2231,7 +2231,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://example.com/v2/followings</code></p>
+<p><code class="prettyprint">POST https://example.com/v2/followings</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -2278,7 +2278,7 @@
 <h2 id="destroy-following">Destroy Following</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">delete</span> <span class="s1">'http://example.com/v2/followings/{location_id}'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">delete</span> <span class="s1">'https://example.com/v2/followings/{location_id}'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">location_id: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">monitor_id: </span><span class="s1">''</span><span class="p">}}</span>
 </code></pre>
 
@@ -2299,7 +2299,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE http://example.com/v2/followings/{location_id}</code></p>
+<p><code class="prettyprint">DELETE https://example.com/v2/followings/{location_id}</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -2344,7 +2344,7 @@
 </tbody></table>
 
 <h2 id="get-calibrations">Get Calibrations</h2>
-<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/monitors/28/calibrations'</span><span class="p">,</span>
+<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/monitors/28/calibrations'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">''</span><span class="p">}}</span>
 </code></pre>
 
@@ -2439,7 +2439,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/monitors/28/calibrations</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/monitors/28/calibrations</code></p>
 
 <aside class="notice">
 * You must replace <code>28</code> with your monitor ID.
@@ -2482,7 +2482,7 @@
 </tbody></table>
 
 <h2 id="update-calibration">Update Calibration</h2>
-<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'http://example.com/v2/monitors/28'</span><span class="p">,</span>
+<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://example.com/v2/monitors/28'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">indicator: </span><span class="s1">'pm2p5'</span><span class="p">,</span> <span class="ss">start_value: </span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="ss">end_value: </span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="ss">factors: </span><span class="p">[</span><span class="s1">'a:1, b:2'</span><span class="p">,</span> <span class="s1">'a:1, b:3'</span><span class="p">]}}</span>
 </code></pre>
 
@@ -2503,7 +2503,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://example.com/v2/monitors/28/calibrations</code></p>
+<p><code class="prettyprint">POST https://example.com/v2/monitors/28/calibrations</code></p>
 
 <aside class="notice">
 * You must replace <code>28</code> with your monitor ID.
@@ -2576,7 +2576,7 @@
 </tbody></table>
 
 <h2 id="destory-calibration">Destory Calibration</h2>
-<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">delete</span> <span class="s1">'http://example.com/v2/monitors/28/calibrations/{factor_id}'</span><span class="p">,</span>
+<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">delete</span> <span class="s1">'https://example.com/v2/monitors/28/calibrations/{factor_id}'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">calibration_id: </span><span class="s1">''</span><span class="p">}}</span>
 </code></pre>
 
@@ -2597,7 +2597,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE http://example.com/v2/monitors/28/calibrations/{factor_id}</code></p>
+<p><code class="prettyprint">DELETE https://example.com/v2/monitors/28/calibrations/{factor_id}</code></p>
 
 <aside class="notice">
 * You must replace <code>28</code> with your monitor ID.
@@ -2656,7 +2656,7 @@
 <h2 id="get-all-data">Get All Data</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/readings'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/readings'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">location_id: </span><span class="s1">'70'</span><span class="p">,</span> <span class="ss">monitor_id: </span><span class="s1">'12,25'</span><span class="p">,</span> <span class="ss">begin_time: </span><span class="s1">'2016-03-29 15:00:00'</span><span class="p">,</span> <span class="ss">end_time: </span><span class="s1">'2016-03-30 15:00:00'</span><span class="p">}}</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -2686,7 +2686,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/readings</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/readings</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -2757,7 +2757,7 @@
 <h2 id="get-graph-data">Get Graph Data</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/readings/graph'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/readings/graph'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">location_id: </span><span class="s1">'70'</span><span class="p">,</span> <span class="ss">monitor_id: </span><span class="s1">'12,25'</span><span class="p">,</span> <span class="ss">begin_time: </span><span class="s1">'2016-03-29 15:00:00'</span><span class="p">,</span> <span class="ss">end_time: </span><span class="s1">'2016-03-30 15:00:00'</span><span class="p">}}</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -2936,7 +2936,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/readings/graph</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/readings/graph</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -2997,7 +2997,7 @@
 <h2 id="get-all-histories">Get All Histories</h2>
 <pre class="highlight ruby"><code>
 
-<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/histories'</span><span class="p">,</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/histories'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">location_id: </span><span class="s1">'70'</span><span class="p">,</span> <span class="ss">monitor_id: </span><span class="s1">'12'</span><span class="p">}}</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -3027,7 +3027,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/histories</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/histories</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -3092,7 +3092,7 @@
 <h1 id="dictionary">Dictionary</h1>
 
 <h2 id="formulas">Formulas</h2>
-<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/dictionaries/formulas'</span><span class="p">,</span>
+<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/dictionaries/formulas'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">indicator: </span><span class="s1">'pm2p5'</span><span class="p">}}</span>
 </code></pre>
 
@@ -3119,7 +3119,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/dictionaries/formulas</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/dictionaries/formulas</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -3158,7 +3158,7 @@
 </tbody></table>
 
 <h2 id="time-zones">Time Zones</h2>
-<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/dictionaries/time_zones'</span><span class="p">,</span>
+<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/dictionaries/time_zones'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">}}</span>
 </code></pre>
 
@@ -3204,7 +3204,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/dictionaries/time_zones</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/dictionaries/time_zones</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -3237,7 +3237,7 @@
 </tbody></table>
 
 <h2 id="indicators">Indicators</h2>
-<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/dictionaries/indicators'</span><span class="p">,</span>
+<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/dictionaries/indicators'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">}}</span>
 </code></pre>
 
@@ -3269,7 +3269,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/dictionaries/indicators</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/dictionaries/indicators</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -3302,7 +3302,7 @@
 </tbody></table>
 
 <h2 id="monitor-types">Monitor Types</h2>
-<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/dictionaries/monitor_types'</span><span class="p">,</span>
+<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/dictionaries/monitor_types'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">}}</span>
 </code></pre>
 
@@ -3337,7 +3337,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/dictionaries/monitor_types</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/dictionaries/monitor_types</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -3370,7 +3370,7 @@
 </tbody></table>
 
 <h2 id="cities">Cities</h2>
-<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/dictionaries/cities'</span><span class="p">,</span>
+<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/dictionaries/cities'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">}}</span>
 </code></pre>
 
@@ -3398,7 +3398,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/dictionaries/cities</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/dictionaries/cities</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -3431,7 +3431,7 @@
 </tbody></table>
 
 <h2 id="workspaces">Workspaces</h2>
-<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/dictionaries/workspaces'</span><span class="p">,</span>
+<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/dictionaries/workspaces'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">'...'</span><span class="p">}}</span>
 </code></pre>
 
@@ -3457,7 +3457,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/dictionaries/workspaces</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/dictionaries/workspaces</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -3490,7 +3490,7 @@
 </tbody></table>
 
 <h2 id="monitors">Monitors</h2>
-<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/dictionaries/monitors'</span><span class="p">,</span>
+<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/dictionaries/monitors'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">'....'</span><span class="p">}}</span>
 </code></pre>
 
@@ -3523,7 +3523,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/dictionaries/monitors</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/dictionaries/monitors</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -3556,7 +3556,7 @@
 </tbody></table>
 
 <h2 id="outdoors">Outdoors</h2>
-<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'http://example.com/v2/dictionaries/outdoors'</span><span class="p">,</span>
+<pre class="highlight ruby"><code><span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/dictionaries/outdoors'</span><span class="p">,</span>
   <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">'12345'</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">'....'</span><span class="p">}}</span>
 </code></pre>
 
@@ -3581,7 +3581,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/v2/dictionaries/outdoors</code></p>
+<p><code class="prettyprint">GET https://example.com/v2/dictionaries/outdoors</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -3729,7 +3729,7 @@
 
 
     <div style="text-align: center; margin-top: 25px;">
-      <small>@2016 GIGA, Version: 2.0. Build: 2016-04-28 02:27:58</small>
+      <small>@2016 GIGA, Version: 2.0. Build: 2016-04-28 02:30:27</small>
     </div>
   </body>
 </html>
