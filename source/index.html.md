@@ -16,7 +16,7 @@ Welcome to the QLEAR API! You can use our API to access QLEAR API endpoints, whi
 
 
 ```ruby
-content = RestClient.get 'http://example.com/v2/ping',
+content = RestClient.get 'https://example.com/v2/ping',
   {params: {access_token: '12345'}}
 ```
 
@@ -51,7 +51,7 @@ Numbers, currency and datetime don’t rely on localization so they will always 
 ```ruby
 
 
-content = RestClient.post 'http://example.com/v2/users/sign_up',
+content = RestClient.post 'https://example.com/v2/users/sign_up',
   {params: {access_token: '12345', email: 'm2@giga.build', password: '11111111', user_name: 'Test User', last_name: '', first_name: ''}}
 ```
 
@@ -78,7 +78,7 @@ Create new account.
 
 ### HTTP Request
 
-`POST http://example.com/v2/users/sign_up`
+`POST https://example.com/v2/users/sign_up`
 
 ### Parameters
 
@@ -97,7 +97,7 @@ mobile|false||Mobile
 ```ruby
 
 
-content = RestClient.post 'http://example.com/v2/users/sign_in',
+content = RestClient.post 'https://example.com/v2/users/sign_in',
   {params: {access_token: '12345', email: 'm2@giga.build', password: '11111111'}}
 ```
 
@@ -124,7 +124,7 @@ Sign in with email and password
 
 ### HTTP Request
 
-`POST http://example.com/v2/users/sign_in`
+`POST https://example.com/v2/users/sign_in`
 
 ### Parameters
 
@@ -140,7 +140,7 @@ password|true||Password
 ```ruby
 
 
-content = RestClient.get 'http://example.com/v2/users/profile',
+content = RestClient.get 'https://example.com/v2/users/profile',
   {params: {access_token: '12345', auth_token: 'd3248374-64cd-44ca-afcd-b7e2c55e40b2'}}
 ```
 
@@ -167,7 +167,7 @@ Get user profile with the giving auth token, returned by server.
 
 ### HTTP Request
 
-`GET http://example.com/v2/users/profile`
+`GET https://example.com/v2/users/profile`
 
 ### Parameters
 
@@ -182,7 +182,7 @@ locale | false| en | Localization
 ```ruby
 
 
-content = RestClient.post 'http://example.com/v2/users/profile',
+content = RestClient.post 'https://example.com/v2/users/profile',
   {params: {access_token: '12345', auth_token: 'd3248374-64cd-44ca-afcd-b7e2c55e40b2', user_name: '', first_name: '', last_name: '', mobile: '', }}
 ```
 
@@ -209,7 +209,7 @@ Update profile
 
 ### HTTP Request
 
-`POST http://example.com/v2/users/profile`
+`POST https://example.com/v2/users/profile`
 
 ### Parameters
 
@@ -228,7 +228,7 @@ mobile|false||Mobile
 ```ruby
 
 
-content = RestClient.post 'http://example.com/v2/users/password',
+content = RestClient.post 'https://example.com/v2/users/password',
   {params: {access_token: '12345', auth_token: 'd3248374-64cd-44ca-afcd-b7e2c55e40b2', old_password: '', new_password: ''}}
 ```
 
@@ -245,7 +245,7 @@ Update profile
 
 ### HTTP Request
 
-`POST http://example.com/v2/users/password`
+`POST https://example.com/v2/users/password`
 
 ### Parameters
 
@@ -265,13 +265,13 @@ new_password|true||New Password
 ```ruby
 
 
-content = RestClient.get 'http://example.com/v2/cities',
+content = RestClient.get 'https://example.com/v2/cities',
   {params: {access_token: '12345'}}
 ```
 
 
 ```shell
-curl "http://example.com/v2/cities?access_token=12345"
+curl "https://example.com/v2/cities?access_token=12345"
 ```
 
 ```json
@@ -307,7 +307,7 @@ This endpoint retrieves all available cities.
 
 ### HTTP Request
 
-`GET http://example.com/v2/cities`
+`GET https://example.com/v2/cities`
 
 ### Parameters
 
@@ -325,12 +325,12 @@ size|false|20|Size per page
 ```ruby
 
 
-content = RestClient.get 'http://example.com/v2/cities/activity',
+content = RestClient.get 'https://example.com/v2/cities/activity',
   {params: {access_token: '12345'}}
 ```
 
 ```shell
-curl "http://example.com/v2/cities/activity?access_token=12345"
+curl "https://example.com/v2/cities/activity?access_token=12345"
 ```
 
 ```json
@@ -369,7 +369,7 @@ Get all activity cities, grouping by country.
 
 ### HTTP Request
 
-`GET http://example.com/v2/cities/activity`
+`GET https://example.com/v2/cities/activity`
 
 ### Parameters
 
@@ -387,13 +387,13 @@ locale |false| en | Localization
 ```ruby
 
 
-content = RestClient.get 'http://example.com/v2/locations',
+content = RestClient.get 'https://example.com/v2/locations',
   {params: {access_token: '12345', per: 2, page: 2}}
 ```
 
 
 ```shell
-curl "http://example.com/v2/locations?access_token=12345&per=2&page=2"
+curl "https://example.com/v2/locations?access_token=12345&per=2&page=2"
 ```
 
 ```json
@@ -443,7 +443,7 @@ curl "http://example.com/v2/locations?access_token=12345&per=2&page=2"
 Get all locations, can be filtered by city id and location name
 ### HTTP Request
 
-`GET http://example.com/v2/locations`
+`GET https://example.com/v2/locations`
 
 ### Parameters
 
@@ -460,11 +460,11 @@ size|false|20|Size per page
 ## Get Location's Details
 
 ```ruby
-content = RestClient.get 'http://example.com/v2/location/45'
+content = RestClient.get 'https://example.com/v2/location/45'
 ```
 
 ```shell
-curl "http://example.com/v2/locations/45"
+curl "https://example.com/v2/locations/45"
 ```
 
 ```json
@@ -577,7 +577,7 @@ curl "http://example.com/v2/locations/45"
 Get location details by ID
 ### HTTP Request
 
-`GET http://example.com/v2/locations/45`
+`GET https://example.com/v2/locations/45`
 
 
 <aside class="notice">
@@ -600,7 +600,7 @@ unlock_token|false||Unlock Token
 ```ruby
 
 
-content = RestClient.post 'http://example.com/v2/followings',
+content = RestClient.post 'https://example.com/v2/followings',
   {params: {access_token: '', auth_token: '', location_id: ''}}
 ```
 
@@ -623,7 +623,7 @@ Follow
 
 ### HTTP Request
 
-`POST http://example.com/v2/followings`
+`POST https://example.com/v2/followings`
 
 ### Parameters
 
@@ -641,7 +641,7 @@ location_id|true|  | Location ID
 ```ruby
 
 
-content = RestClient.delete 'http://example.com/v2/followings/{location_id}',
+content = RestClient.delete 'https://example.com/v2/followings/{location_id}',
   {params: {access_token: '', auth_token: '', location_id: ''}}
 ```
 
@@ -664,7 +664,7 @@ Unfollow
 
 ### HTTP Request
 
-`DELETE http://example.com/v2/followings/{location_id}`
+`DELETE https://example.com/v2/followings/{location_id}`
 
 ### Parameters
 
@@ -680,7 +680,7 @@ location_id|true|  | Location ID
 ```ruby
 
 
-content = RestClient.get 'http://example.com/v2/locations/48/monitors',
+content = RestClient.get 'https://example.com/v2/locations/48/monitors',
   {params: {access_token: '12345'}}
 ```
 
@@ -771,7 +771,7 @@ content = RestClient.get 'http://example.com/v2/locations/48/monitors',
 Get all monitors of the current location
 ### HTTP Request
 
-`GET http://example.com/v2/locations/45/monitors`
+`GET https://example.com/v2/locations/45/monitors`
 
 <aside class="notice">
 * You must replace <code>45</code> with your location ID.
@@ -792,13 +792,13 @@ location_id|true|  | Location ID
 ```ruby
 
 
-content = RestClient.get 'http://example.com/v2/locations',
+content = RestClient.get 'https://example.com/v2/locations',
   {params: {access_token: '12345', location_id: 45, monitor_id: 28}}
 ```
 
 
 ```shell
-curl "http://example.com/v2/locations/45/monitors/28?access_token=12345"
+curl "https://example.com/v2/locations/45/monitors/28?access_token=12345"
 ```
 
 ```json
@@ -862,7 +862,7 @@ curl "http://example.com/v2/locations/45/monitors/28?access_token=12345"
 Get monitor's detail, which binding the specific location
 ### HTTP Request
 
-`GET http://example.com/v2/locations/45/monitors/28`
+`GET https://example.com/v2/locations/45/monitors/28`
 
 <aside class="notice">
 * You must replace <code>45</code> with your location ID, <code>28</code> with your monitor ID.
@@ -883,7 +883,7 @@ monitor_id|true|| Monitor ID
 ```ruby
 
 
-content = RestClient.post 'http://example.com/v2/locations/45/unlock',
+content = RestClient.post 'https://example.com/v2/locations/45/unlock',
   {params: {access_token: '12345', password: '123456'}}
 ```
 
@@ -1003,7 +1003,7 @@ content = RestClient.post 'http://example.com/v2/locations/45/unlock',
 Unlock location with the giving password
 ### HTTP Request
 
-`POST http://example.com/v2/locations/45/unlock`
+`POST https://example.com/v2/locations/45/unlock`
 
 <aside class="notice">
 * You must replace <code>45</code> with your location ID.
@@ -1025,7 +1025,7 @@ password|true||Password
 ```ruby
 
 
-content = RestClient.get 'http://example.com/v2/locations/28/sharings',
+content = RestClient.get 'https://example.com/v2/locations/28/sharings',
   {params: {access_token: '12345'}}
 ```
 
@@ -1065,7 +1065,7 @@ Get shared locations
 
 ### HTTP Request
 
-`GET http://example.com/v2/locations/28/sharings`
+`GET https://example.com/v2/locations/28/sharings`
 
 <aside class="notice">
 * You must replace <code>28</code> with your location ID.
@@ -1086,7 +1086,7 @@ location_id|true|  | Location ID
 ```ruby
 
 
-content = RestClient.post 'http://example.com/v2/locations/28/sharings',
+content = RestClient.post 'https://example.com/v2/locations/28/sharings',
   {params: {access_token: '12345', auth_token: '', code: 'TITCTA-6H3J02D0', permission: 'read_only'}}
 ```
 
@@ -1121,7 +1121,7 @@ Share location to other client.
 
 ### HTTP Request
 
-`POST http://example.com/v2/locations/28/sharings`
+`POST https://example.com/v2/locations/28/sharings`
 
 <aside class="notice">
 * You must replace <code>28</code> with your location ID.
@@ -1143,7 +1143,7 @@ permission|true||read_only for full_access
 
 ```ruby
 
-content = RestClient.delete 'http://example.com/v2/locations/28/sharings/{id}',
+content = RestClient.delete 'https://example.com/v2/locations/28/sharings/{id}',
   {params: {access_token: '12345', auth_token: '', id: ''}}
 ```
 
@@ -1165,7 +1165,7 @@ Destroy the shared location
 
 ### HTTP Request
 
-`DELETE http://example.com/v2/locations/28/sharings/{id}`
+`DELETE https://example.com/v2/locations/28/sharings/{id}`
 
 <aside class="notice">
 * You must replace <code>28</code> with your location ID.
@@ -1187,7 +1187,7 @@ id|true||Shared Location Id
 
 ```ruby
 
-content = RestClient.get 'http://example.com/v2/locations/28/notifications',
+content = RestClient.get 'https://example.com/v2/locations/28/notifications',
   {params: {access_token: '12345', auth_token: ''}}
 ```
 
@@ -1238,7 +1238,7 @@ GET notifications
 
 ### HTTP Request
 
-`GET http://example.com/v2/locations/28/notifications`
+`GET https://example.com/v2/locations/28/notifications`
 
 <aside class="notice">
 * You must replace <code>28</code> with your location ID.
@@ -1259,7 +1259,7 @@ location_id|true|  | Location ID
 
 ```ruby
 
-content = RestClient.post 'http://example.com/v2/locations/28/notifications',
+content = RestClient.post 'https://example.com/v2/locations/28/notifications',
   {params: {access_token: '12345', auth_token: ''}}
 ```
 
@@ -1281,7 +1281,7 @@ Create or update notifications
 
 ### HTTP Request
 
-`POST http://example.com/v2/locations/28/notifications`
+`POST https://example.com/v2/locations/28/notifications`
 
 <aside class="notice">
 * You must replace <code>28</code> with your location ID.
@@ -1313,7 +1313,7 @@ compare_indicator|false||Array
 ```ruby
 
 
-content = RestClient.get 'http://example.com/v2/monitors/28',
+content = RestClient.get 'https://example.com/v2/monitors/28',
   {params: {access_token: '12345'}}
 ```
 
@@ -1379,7 +1379,7 @@ content = RestClient.get 'http://example.com/v2/monitors/28',
 Get monitor's detail
 ### HTTP Request
 
-`GET http://example.com/v2/monitors/28`
+`GET https://example.com/v2/monitors/28`
 
 <aside class="notice">
 * You must replace <code>28</code> with your monitor ID.
@@ -1399,7 +1399,7 @@ monitor_id|true|| Monitor ID
 ## Update Monitor
 
 ```ruby
-content = RestClient.post 'http://example.com/v2/monitors/28',
+content = RestClient.post 'https://example.com/v2/monitors/28',
   {params: {access_token: '12345'}}
 ```
 
@@ -1434,7 +1434,7 @@ Update monitor
 
 ### HTTP Request
 
-`POST http://example.com/v2/monitors/28`
+`POST https://example.com/v2/monitors/28`
 
 <aside class="notice">
 * You must replace <code>28</code> with your monitor ID.
@@ -1465,7 +1465,7 @@ batch_reading|false|false|Only for oxford
 ```ruby
 
 
-content = RestClient.post 'http://example.com/v2/followings',
+content = RestClient.post 'https://example.com/v2/followings',
   {params: {access_token: '', auth_token: '', location_id: '', monitor_id: ''}}
 ```
 
@@ -1488,7 +1488,7 @@ Follow
 
 ### HTTP Request
 
-`POST http://example.com/v2/followings`
+`POST https://example.com/v2/followings`
 
 ### Parameters
 
@@ -1507,7 +1507,7 @@ monitor_id|true||Monitor ID
 ```ruby
 
 
-content = RestClient.delete 'http://example.com/v2/followings/{location_id}',
+content = RestClient.delete 'https://example.com/v2/followings/{location_id}',
   {params: {access_token: '', auth_token: '', location_id: '', monitor_id: ''}}
 ```
 
@@ -1530,7 +1530,7 @@ Unfollow
 
 ### HTTP Request
 
-`DELETE http://example.com/v2/followings/{location_id}`
+`DELETE https://example.com/v2/followings/{location_id}`
 
 ### Parameters
 
@@ -1546,7 +1546,7 @@ monitor_id|true||Monitor ID
 ## Get Calibrations
 
 ```ruby
-content = RestClient.get 'http://example.com/v2/monitors/28/calibrations',
+content = RestClient.get 'https://example.com/v2/monitors/28/calibrations',
   {params: {access_token: '12345', auth_token: ''}}
 ```
 
@@ -1641,7 +1641,7 @@ Get all calibrations for specific monitor
 
 ### HTTP Request
 
-`GET http://example.com/v2/monitors/28/calibrations`
+`GET https://example.com/v2/monitors/28/calibrations`
 
 <aside class="notice">
 * You must replace <code>28</code> with your monitor ID.
@@ -1660,7 +1660,7 @@ monitor_id|true|| Monitor ID
 ## Update Calibration
 
 ```ruby
-content = RestClient.post 'http://example.com/v2/monitors/28',
+content = RestClient.post 'https://example.com/v2/monitors/28',
   {params: {access_token: '12345', indicator: 'pm2p5', start_value: [-1, 20], end_value: [20, 50], factors: ['a:1, b:2', 'a:1, b:3']}}
 ```
 
@@ -1681,7 +1681,7 @@ Update monitor
 
 ### HTTP Request
 
-`POST http://example.com/v2/monitors/28/calibrations`
+`POST https://example.com/v2/monitors/28/calibrations`
 
 <aside class="notice">
 * You must replace <code>28</code> with your monitor ID.
@@ -1705,7 +1705,7 @@ factors|true||Array
 ## Destory Calibration
 
 ```ruby
-content = RestClient.delete 'http://example.com/v2/monitors/28/calibrations/{factor_id}',
+content = RestClient.delete 'https://example.com/v2/monitors/28/calibrations/{factor_id}',
   {params: {access_token: '12345', calibration_id: ''}}
 ```
 
@@ -1728,7 +1728,7 @@ Update monitor
 
 ### HTTP Request
 
-`DELETE http://example.com/v2/monitors/28/calibrations/{factor_id}`
+`DELETE https://example.com/v2/monitors/28/calibrations/{factor_id}`
 
 <aside class="notice">
 * You must replace <code>28</code> with your monitor ID.
@@ -1754,7 +1754,7 @@ factor_id|true||Factor ID
 ```ruby
 
 
-content = RestClient.get 'http://example.com/v2/readings',
+content = RestClient.get 'https://example.com/v2/readings',
   {params: {access_token: '12345', location_id: '70', monitor_id: '12,25', begin_time: '2016-03-29 15:00:00', end_time: '2016-03-30 15:00:00'}}
 ```
 
@@ -1786,7 +1786,7 @@ Retrieves all the data of specific location or monitor.
 
 ### HTTP Request
 
-`GET http://example.com/v2/readings`
+`GET https://example.com/v2/readings`
 
 ### Parameters
 
@@ -1809,7 +1809,7 @@ size|false|20|Size per page
 ```ruby
 
 
-content = RestClient.get 'http://example.com/v2/readings/graph',
+content = RestClient.get 'https://example.com/v2/readings/graph',
   {params: {access_token: '12345', location_id: '70', monitor_id: '12,25', begin_time: '2016-03-29 15:00:00', end_time: '2016-03-30 15:00:00'}}
 ```
 
@@ -1990,7 +1990,7 @@ Retrieves all the average readings of specific location or monitor for graph.
 
 ### HTTP Request
 
-`GET http://example.com/v2/readings/graph`
+`GET https://example.com/v2/readings/graph`
 
 ### Parameters
 
@@ -2012,7 +2012,7 @@ end_time|false|Time.now|End time for query
 ```ruby
 
 
-content = RestClient.get 'http://example.com/v2/histories',
+content = RestClient.get 'https://example.com/v2/histories',
   {params: {access_token: '12345', location_id: '70', monitor_id: '12'}}
 ```
 
@@ -2044,7 +2044,7 @@ Get histories of location or monitor.
 
 ### HTTP Request
 
-`GET http://example.com/v2/histories`
+`GET https://example.com/v2/histories`
 
 ### Parameters
 
@@ -2064,7 +2064,7 @@ size|false|20|Size per page
 ## Formulas
 
 ```ruby
-content = RestClient.get 'http://example.com/v2/dictionaries/formulas',
+content = RestClient.get 'https://example.com/v2/dictionaries/formulas',
   {params: {access_token: '12345', indicator: 'pm2p5'}}
 ```
 
@@ -2091,7 +2091,7 @@ Get all formulas for specifical indicator
 
 ### HTTP Request
 
-`GET http://example.com/v2/dictionaries/formulas`
+`GET https://example.com/v2/dictionaries/formulas`
 
 ### Parameters
 
@@ -2106,7 +2106,7 @@ indicator|false|| Indicator
 ## Time Zones
 
 ```ruby
-content = RestClient.get 'http://example.com/v2/dictionaries/time_zones',
+content = RestClient.get 'https://example.com/v2/dictionaries/time_zones',
   {params: {access_token: '12345'}}
 ```
 
@@ -2152,7 +2152,7 @@ Get all time zones
 
 ### HTTP Request
 
-`GET http://example.com/v2/dictionaries/time_zones`
+`GET https://example.com/v2/dictionaries/time_zones`
 
 ### Parameters
 
@@ -2166,7 +2166,7 @@ locale |false| en | Localization
 ## Indicators
 
 ```ruby
-content = RestClient.get 'http://example.com/v2/dictionaries/indicators',
+content = RestClient.get 'https://example.com/v2/dictionaries/indicators',
   {params: {access_token: '12345'}}
 ```
 
@@ -2198,7 +2198,7 @@ Get all indicators
 
 ### HTTP Request
 
-`GET http://example.com/v2/dictionaries/indicators`
+`GET https://example.com/v2/dictionaries/indicators`
 
 ### Parameters
 
@@ -2213,7 +2213,7 @@ locale |false| en | Localization
 ## Monitor Types
 
 ```ruby
-content = RestClient.get 'http://example.com/v2/dictionaries/monitor_types',
+content = RestClient.get 'https://example.com/v2/dictionaries/monitor_types',
   {params: {access_token: '12345'}}
 ```
 
@@ -2248,7 +2248,7 @@ Get all types of monitor
 
 ### HTTP Request
 
-`GET http://example.com/v2/dictionaries/monitor_types`
+`GET https://example.com/v2/dictionaries/monitor_types`
 
 ### Parameters
 
@@ -2261,7 +2261,7 @@ locale |false| en | Localization
 ## Cities
 
 ```ruby
-content = RestClient.get 'http://example.com/v2/dictionaries/cities',
+content = RestClient.get 'https://example.com/v2/dictionaries/cities',
   {params: {access_token: '12345'}}
 ```
 
@@ -2289,7 +2289,7 @@ Get all cities
 
 ### HTTP Request
 
-`GET http://example.com/v2/dictionaries/cities`
+`GET https://example.com/v2/dictionaries/cities`
 
 ### Parameters
 
@@ -2304,7 +2304,7 @@ locale |false| en | Localization
 ## Workspaces
 
 ```ruby
-content = RestClient.get 'http://example.com/v2/dictionaries/workspaces',
+content = RestClient.get 'https://example.com/v2/dictionaries/workspaces',
   {params: {access_token: '12345', auth_token: '...'}}
 ```
 
@@ -2330,7 +2330,7 @@ Get all workspaces
 
 ### HTTP Request
 
-`GET http://example.com/v2/dictionaries/workspaces`
+`GET https://example.com/v2/dictionaries/workspaces`
 
 ### Parameters
 
@@ -2344,7 +2344,7 @@ locale |false| en | Localization
 ## Monitors
 
 ```ruby
-content = RestClient.get 'http://example.com/v2/dictionaries/monitors',
+content = RestClient.get 'https://example.com/v2/dictionaries/monitors',
   {params: {access_token: '12345', auth_token: '....'}}
 ```
 
@@ -2377,7 +2377,7 @@ Get all monitors
 
 ### HTTP Request
 
-`GET http://example.com/v2/dictionaries/monitors`
+`GET https://example.com/v2/dictionaries/monitors`
 
 ### Parameters
 
@@ -2392,7 +2392,7 @@ locale |false| en | Localization
 ## Outdoors
 
 ```ruby
-content = RestClient.get 'http://example.com/v2/dictionaries/outdoors',
+content = RestClient.get 'https://example.com/v2/dictionaries/outdoors',
   {params: {access_token: '12345', auth_token: '....'}}
 ```
 
@@ -2417,7 +2417,7 @@ Get all outdoor locations
 
 ### HTTP Request
 
-`GET http://example.com/v2/dictionaries/outdoors`
+`GET https://example.com/v2/dictionaries/outdoors`
 
 ### Parameters
 
