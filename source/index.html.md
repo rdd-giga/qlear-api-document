@@ -49,7 +49,7 @@ Numbers, currency and datetime don’t rely on localization so they will always 
 
 
 ```ruby
-require 'rest-client'
+
 
 content = RestClient.post 'http://example.com/v2/users/sign_up',
   {params: {access_token: '12345', email: 'm2@giga.build', password: '11111111', user_name: 'Test User', last_name: '', first_name: ''}}
@@ -95,7 +95,7 @@ mobile|false||Mobile
 ## Sign In
 
 ```ruby
-require 'rest-client'
+
 
 content = RestClient.post 'http://example.com/v2/users/sign_in',
   {params: {access_token: '12345', email: 'm2@giga.build', password: '11111111'}}
@@ -138,7 +138,7 @@ password|true||Password
 ## Get Profile
 
 ```ruby
-require 'rest-client'
+
 
 content = RestClient.get 'http://example.com/v2/users/profile',
   {params: {access_token: '12345', auth_token: 'd3248374-64cd-44ca-afcd-b7e2c55e40b2'}}
@@ -180,7 +180,7 @@ locale | false| en | Localization
 ## Update Profile
 
 ```ruby
-require 'rest-client'
+
 
 content = RestClient.post 'http://example.com/v2/users/profile',
   {params: {access_token: '12345', auth_token: 'd3248374-64cd-44ca-afcd-b7e2c55e40b2', user_name: '', first_name: '', last_name: '', mobile: '', }}
@@ -226,7 +226,7 @@ mobile|false||Mobile
 ## Update Password
 
 ```ruby
-require 'rest-client'
+
 
 content = RestClient.post 'http://example.com/v2/users/password',
   {params: {access_token: '12345', auth_token: 'd3248374-64cd-44ca-afcd-b7e2c55e40b2', old_password: '', new_password: ''}}
@@ -263,7 +263,7 @@ new_password|true||New Password
 
 
 ```ruby
-require 'rest-client'
+
 
 content = RestClient.get 'http://example.com/v2/cities',
   {params: {access_token: '12345'}}
@@ -323,7 +323,7 @@ size|false|20|Size per page
 ## Get Activity Cities
 
 ```ruby
-require 'rest-client'
+
 
 content = RestClient.get 'http://example.com/v2/cities/activity',
   {params: {access_token: '12345'}}
@@ -385,7 +385,7 @@ locale |false| en | Localization
 ## Get All Locations
 
 ```ruby
-require 'rest-client'
+
 
 content = RestClient.get 'http://example.com/v2/locations',
   {params: {access_token: '12345', per: 2, page: 2}}
@@ -593,10 +593,92 @@ auth_token|true||Auth Token
 locale |false| en | Localization
 unlock_token|false||Unlock Token
 
+
+## Add Following
+
+
+```ruby
+
+
+content = RestClient.post 'http://example.com/v2/followings',
+  {params: {access_token: '', auth_token: '', location_id: ''}}
+```
+
+
+> Success
+
+```json
+{
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
+
+
+Follow
+
+### HTTP Request
+
+`POST http://example.com/v2/followings`
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+location_id|true|  | Location ID
+
+
+## Destroy Following
+
+
+```ruby
+
+
+content = RestClient.delete 'http://example.com/v2/followings/{location_id}',
+  {params: {access_token: '', auth_token: '', location_id: ''}}
+```
+
+
+> Success
+
+```json
+{
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
+
+
+Unfollow
+
+### HTTP Request
+
+`DELETE http://example.com/v2/followings/{location_id}`
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+location_id|true|  | Location ID
+
 ## Get All Monitor
 
 ```ruby
-require 'rest-client'
+
 
 content = RestClient.get 'http://example.com/v2/locations/48/monitors',
   {params: {access_token: '12345'}}
@@ -708,7 +790,7 @@ location_id|true|  | Location ID
 ## Get Monitor's Detail
 
 ```ruby
-require 'rest-client'
+
 
 content = RestClient.get 'http://example.com/v2/locations',
   {params: {access_token: '12345', location_id: 45, monitor_id: 28}}
@@ -799,7 +881,7 @@ monitor_id|true|| Monitor ID
 ## Unlock Location
 
 ```ruby
-require 'rest-client'
+
 
 content = RestClient.post 'http://example.com/v2/locations/45/unlock',
   {params: {access_token: '12345', password: '123456'}}
@@ -937,20 +1019,304 @@ locale |false| en | Localization
 location_id|true|  | Location ID
 password|true||Password
 
+## Get Sharings
+
+
+```ruby
+
+
+content = RestClient.get 'http://example.com/v2/locations/28/sharings',
+  {params: {access_token: '12345'}}
+```
+
+
+```json
+{
+  "data": [
+    {
+      "id": 2,
+      "client_id": 11,
+      "client_name": "This is Test Client, Test Again",
+      "permission": "read_only"
+    },
+    {
+      "id": 3,
+      "client_id": 12,
+      "client_name": "This is Test Client, Test Again1",
+      "permission": "read_only"
+    },
+    {
+      "id": 4,
+      "client_id": 7,
+      "client_name": "111",
+      "permission": "full_access"
+    }
+  ],
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
+
+Get shared locations
+
+### HTTP Request
+
+`GET http://example.com/v2/locations/28/sharings`
+
+<aside class="notice">
+* You must replace <code>28</code> with your location ID.
+</aside>
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+location_id|true|  | Location ID
+
+## Add Sharing
+
+
+```ruby
+
+
+content = RestClient.post 'http://example.com/v2/locations/28/sharings',
+  {params: {access_token: '12345', auth_token: '', code: 'TITCTA-6H3J02D0', permission: 'read_only'}}
+```
+
+
+> Success
+
+```json
+{
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
+> Or failure
+
+
+```json
+{
+  "meta": {
+    "code": 10024,
+    "message": "Already shared",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
+
+Share location to other client.
+
+### HTTP Request
+
+`POST http://example.com/v2/locations/28/sharings`
+
+<aside class="notice">
+* You must replace <code>28</code> with your location ID.
+</aside>
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+location_id|true|  | Location ID
+code|true||Workspace(Client) Code
+permission|true||read_only for full_access
+
+## Destroy Sharing
+
+
+```ruby
+
+content = RestClient.delete 'http://example.com/v2/locations/28/sharings/{id}',
+  {params: {access_token: '12345', auth_token: '', id: ''}}
+```
+
+
+> Success
+
+```json
+{
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
+
+Destroy the shared location
+
+### HTTP Request
+
+`DELETE http://example.com/v2/locations/28/sharings/{id}`
+
+<aside class="notice">
+* You must replace <code>28</code> with your location ID.
+</aside>
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+location_id|true|  | Location ID
+id|true||Shared Location Id
+
+
+## Get Notifications
+
+
+```ruby
+
+content = RestClient.get 'http://example.com/v2/locations/28/notifications',
+  {params: {access_token: '12345', auth_token: ''}}
+```
+
+
+> Success
+
+```json
+{
+  "data": {
+    "stale_check": false,
+    "over_repeat_check": false,
+    "frequency": 3,
+    "limit_rules": [
+      {
+        "indicator": "pm2p5",
+        "type": "min",
+        "value": 100
+      },
+      {
+        "indicator": "hcho",
+        "type": "max",
+        "value": 200
+      }
+    ],
+    "compare_rules": [
+      {
+        "indicator": "pm2p5",
+        "value": 90,
+        "min_value": 5
+      },
+      {
+        "indicator": "hcho",
+        "value": 85,
+        "min_value": 40
+      }
+    ]
+  },
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
+
+GET notifications
+
+### HTTP Request
+
+`GET http://example.com/v2/locations/28/notifications`
+
+<aside class="notice">
+* You must replace <code>28</code> with your location ID.
+</aside>
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+location_id|true|  | Location ID
+
+
+## Create/Update Notifications
+
+
+```ruby
+
+content = RestClient.post 'http://example.com/v2/locations/28/notifications',
+  {params: {access_token: '12345', auth_token: ''}}
+```
+
+
+> Success
+
+```json
+{
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
+
+Create or update notifications
+
+### HTTP Request
+
+`POST http://example.com/v2/locations/28/notifications`
+
+<aside class="notice">
+* You must replace <code>28</code> with your location ID.
+</aside>
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+location_id|true|  | Location ID
+stale_check|false|| true or false
+over_repeat_check|false||true or false
+frequency|false||1 for Every Hour, 2 for Every 6 Hours, 3 for Every Day
+limit_value|false||Array
+limit_type|false||Array
+limit_indicator|false||Array
+compare_value|false||Array
+compare_min_value|false||Array
+compare_indicator|false||Array
+
+
+
 # Monitor
 ## Get Monitor's Detail
 
 ```ruby
-require 'rest-client'
+
 
 content = RestClient.get 'http://example.com/v2/monitors/28',
   {params: {access_token: '12345'}}
 ```
 
-
-```shell
-curl "http://example.com/v2/monitors/28?access_token=12345"
-```
 
 ```json
 
@@ -1093,13 +1459,300 @@ note|false||Only available for QLEAR staff
 logo|false||Image for monitor
 batch_reading|false|false|Only for oxford
 
+## Add Following
+
+
+```ruby
+
+
+content = RestClient.post 'http://example.com/v2/followings',
+  {params: {access_token: '', auth_token: '', location_id: '', monitor_id: ''}}
+```
+
+
+> Success
+
+```json
+{
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
+
+
+Follow
+
+### HTTP Request
+
+`POST http://example.com/v2/followings`
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+location_id|true|  | Location ID
+monitor_id|true||Monitor ID
+
+
+## Destroy Following
+
+
+```ruby
+
+
+content = RestClient.delete 'http://example.com/v2/followings/{location_id}',
+  {params: {access_token: '', auth_token: '', location_id: '', monitor_id: ''}}
+```
+
+
+> Success
+
+```json
+{
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
+
+
+Unfollow
+
+### HTTP Request
+
+`DELETE http://example.com/v2/followings/{location_id}`
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+location_id|true|  | Location ID
+monitor_id|true||Monitor ID
+
+
+## Get Calibrations
+
+```ruby
+content = RestClient.get 'http://example.com/v2/monitors/28/calibrations',
+  {params: {access_token: '12345', auth_token: ''}}
+```
+
+> Success
+
+```json
+{
+  "data": [
+    {
+      "indicator": "hcho",
+      "calibration": {
+        "formula": "y = a*(x**5) + b*(x**4) + c*(x**3) + d*(x**2) + e*x + f",
+        "calibration_id": 292,
+        "factors": [
+          {
+            "factor_id": 303,
+            "start_value": 1,
+            "end_value": 20,
+            "config": "a:1.0,  b:1.0,  c:1.0,  d:1.0,  e:1.0,  f:0.0"
+          }
+        ]
+      }
+    },
+    {
+      "indicator": "co2",
+      "calibration": {
+        "formula": "y = a*x + b",
+        "calibration_id": 293,
+        "factors": [
+          {
+            "factor_id": 304,
+            "start_value": 1,
+            "end_value": 4,
+            "config": "a:1.0,  b:0.0"
+          }
+        ]
+      }
+    },
+    {
+      "indicator": "tvoc",
+      "calibration": null
+    },
+    {
+      "indicator": "pm2p5",
+      "calibration": null
+    },
+    {
+      "indicator": "pm10",
+      "calibration": null
+    },
+    {
+      "indicator": "temperature",
+      "calibration": {
+        "formula": "y = a*x + b",
+        "calibration_id": 290,
+        "factors": [
+          {
+            "factor_id": 301,
+            "start_value": -1,
+            "end_value": -1,
+            "config": "a:1.0,  b:-0.35"
+          }
+        ]
+      }
+    },
+    {
+      "indicator": "humidity",
+      "calibration": {
+        "formula": "y = a*x + b",
+        "calibration_id": 291,
+        "factors": [
+          {
+            "factor_id": 302,
+            "start_value": -1,
+            "end_value": -1,
+            "config": "a:1.0,  b:1.0"
+          }
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
+
+Get all calibrations for specific monitor
+
+### HTTP Request
+
+`GET http://example.com/v2/monitors/28/calibrations`
+
+<aside class="notice">
+* You must replace <code>28</code> with your monitor ID.
+</aside>
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+monitor_id|true|| Monitor ID
+
+
+## Update Calibration
+
+```ruby
+content = RestClient.post 'http://example.com/v2/monitors/28',
+  {params: {access_token: '12345', indicator: 'pm2p5', start_value: [-1, 20], end_value: [20, 50], factors: ['a:1, b:2', 'a:1, b:3']}}
+```
+
+> Success
+
+```json
+{
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "27148262-96bd-4608-8d7d-8afb8de7ffb2"
+  }
+}
+```
+
+Update monitor
+
+### HTTP Request
+
+`POST http://example.com/v2/monitors/28/calibrations`
+
+<aside class="notice">
+* You must replace <code>28</code> with your monitor ID.
+</aside>
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+monitor_id|true|| Monitor ID
+formula|true||Formula
+indicator|true||Indicator
+start_value|true||Array
+end_value|true||Array
+factors|true||Array
+
+
+## Destory Calibration
+
+```ruby
+content = RestClient.delete 'http://example.com/v2/monitors/28/calibrations/{factor_id}',
+  {params: {access_token: '12345', calibration_id: ''}}
+```
+
+> Success
+
+```json
+{
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "27148262-96bd-4608-8d7d-8afb8de7ffb2"
+  }
+}
+```
+
+
+
+Update monitor
+
+### HTTP Request
+
+`DELETE http://example.com/v2/monitors/28/calibrations/{factor_id}`
+
+<aside class="notice">
+* You must replace <code>28</code> with your monitor ID.
+</aside>
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+monitor_id|true|| Monitor ID
+calibration_id|true||Calibration ID
+factor_id|true||Factor ID
+
+
 # Readings
 
 ## Get All Data
 
 
 ```ruby
-require 'rest-client'
+
 
 content = RestClient.get 'http://example.com/v2/readings',
   {params: {access_token: '12345', location_id: '70', monitor_id: '12,25', begin_time: '2016-03-29 15:00:00', end_time: '2016-03-30 15:00:00'}}
@@ -1154,7 +1807,7 @@ size|false|20|Size per page
 
 
 ```ruby
-require 'rest-client'
+
 
 content = RestClient.get 'http://example.com/v2/readings/graph',
   {params: {access_token: '12345', location_id: '70', monitor_id: '12,25', begin_time: '2016-03-29 15:00:00', end_time: '2016-03-30 15:00:00'}}
@@ -1357,7 +2010,7 @@ end_time|false|Time.now|End time for query
 
 
 ```ruby
-require 'rest-client'
+
 
 content = RestClient.get 'http://example.com/v2/histories',
   {params: {access_token: '12345', location_id: '70', monitor_id: '12'}}
@@ -1777,6 +2430,15 @@ locale |false| en | Localization
 
 
 # Changelog
+
+## 2016-04-28
+
+Status|Api|Content|
+ -------| ------- | -----------
+Added|/v2/followings|location and monitor following
+Added|/v2/locations/{location_id}/sharings|location sharing
+Added|/v2/locations/{location_id}/notifications|location notification
+Added|/v2/monitors/{monitor_id}/calibrations|monitor calibration
 
 ## 2016-04-20
 Status|Api|Content|
