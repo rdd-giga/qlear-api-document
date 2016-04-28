@@ -341,7 +341,7 @@ Create new account.
 
 ### HTTP Request
 
-`POST https://example.com/v2/users/dashboard`
+`GET https://example.com/v2/users/dashboard`
 
 ### Parameters
 
