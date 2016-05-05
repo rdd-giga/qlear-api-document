@@ -689,6 +689,159 @@ locale |false| en | Localization
 unlock_token|false||Unlock Token
 
 
+## Update Location
+
+
+```ruby
+
+
+content = RestClient.patch 'https://example.com/v2/locations/45',
+  {params: {access_token: '', auth_token: ''}}
+```
+
+
+> Success
+
+```json
+{
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
+
+
+Update Location
+
+### HTTP Request
+
+`PATCH https://example.com/v2/locations/45`
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+location_id|true|  | Location ID
+tab|true|basic| basic, advanced, monitor, permission, certification
+active|false|true|
+client_id|true||Workspace, Owner or Client
+name|true||Location Name
+category|true|indoor| indoor or outdoor
+city_id|true||City ID
+time_zone|false||TimeZone
+outdoor_location_id|false||Compared Outdoor ID
+theme|false||Location Theme
+logo|false||Location Logo
+primary_indicator|false|pm2p5|See indicators
+tvoc_unit|false|μg/m³|μg/m³ or ppm
+privacy|false|false| true or false, true for lock, otherwise public
+password|false||set password if location is locked
+active_hours|false|false|check if need set active hours
+active_hours_day_in_week|false|| Array, 0 for Sunday, 1 for Monday, and so on. [0, 1, 2, 3, 4, 5, 6]
+active_hours_begin_time|false||Array, default ['0:00', '0:00', '0:00', '0:00', '0:00', '0:00', '0:00']
+active_hours_end_time|false||Array, default ['23:59', '23:59', '23:59', '23:59', '23:59', '23:59', '23:59']
+active_hours_enable|false|true|Array, default [true, true, true, true, true, true, true]
+active_hours_close_message_en|false||message when non-acive, en
+active_hours_close_message_zh|false||message when non-acive, zh-CN
+average_indicator|false||Array
+average_active|false|true| true for show, else hide| Visibility
+monitor_id|false||Array, Monitor ID
+monitor_name|false||Array
+monitor_indicator|false||Array of Array, see indicators
+monitor_active|false|true|true for monitor enabled, else false
+permission_internal_access|false||1 for Regular, 2 for Only Admins
+permission_user_id|false||Array
+permission_role|false||Array, member or admin
+certification_id|false||Array
+
+
+## Location Staffs
+
+
+```ruby
+
+
+content = RestClient.get 'https://example.com/v2/locations/45/staffs',
+  {params: {access_token: '', auth_token: ''}}
+```
+
+
+> Success
+
+```json
+{
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
+
+
+Get staffs
+
+### HTTP Request
+
+`GET https://example.com/v2/locations/45/staffs`
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+location_id|true|  | Location ID
+
+
+## Location Certifications
+
+
+```ruby
+
+
+content = RestClient.get 'https://example.com/v2/locations/45/certifications',
+  {params: {access_token: '', auth_token: ''}}
+```
+
+
+> Success
+
+```json
+{
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
+
+
+Get certifications
+
+### HTTP Request
+
+`GET https://example.com/v2/locations/45/certifications`
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+location_id|true|  | Location ID
+
 ## Add Following
 
 
