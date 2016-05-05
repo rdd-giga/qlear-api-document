@@ -2818,6 +2818,14 @@ locale |false| en | Localization
 
 # Changelog
 
+## 2016-05-05
+
+Status|Api|Content|
+ -------| ------- | -----------
+Added|GET /v2/clients|Get clients
+Added|GET /v2/clients/{client_id}/users|Get users of the specific client
+
+
 ## 2016-04-28
 
 Status|Api|Content|
