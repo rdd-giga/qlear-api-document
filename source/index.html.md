@@ -2300,6 +2300,7 @@ Parameter | Require| Default | Description
 --------- | -------| ------- | -----------
 access_token | true| | Access Token.
 auth_token|true||Auth Token
+locale |false| en | Localization
 location_id | true|  | Location id
 monitor_id|false||Monitor id
 begin_time|false||Begin time for query
@@ -2307,7 +2308,145 @@ end_time|false||End time for query
 page|false|1|Page number
 size|false|20|Size per page
 
+# Client
+
+## Get All Clients
+
+
+```ruby
+
+
+content = RestClient.get 'https://example.com/v2/clients',
+  {params: {access_token: '12345', auth_token: ''}}
+```
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "code": "TC-R1RA",
+      "name": "Test Client",
+      "description": "Hello guys!",
+      "contact": "Martin",
+      "tel": "021-50891119",
+      "mobile": "15921367849",
+      "email": "test@gmail.com",
+      "address": "Shanghai",
+      "logo": null
+    }
+  ],
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": ""
+  }
+}
+```
+
+Get all clients.
+
+### HTTP Request
+
+`GET https://example.com/v2/clients`
+
+### Parameters
+
+Parameter | Require| Default | Description
+--------- | -------| ------- | -----------
+access_token | true| | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+
+## Get Users
+
+
+```ruby
+
+
+content = RestClient.get 'https://example.com/v2/clients/{client_id}/users',
+  {params: {access_token: '12345', auth_token: ''}}
+```
+
+```json
+{
+  "data": [
+    {
+      "id": 15,
+      "email": "test@gigabase.org",
+      "name": "Martin Xu"
+    }
+  ],
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": null
+  }
+}
+```
+
+Get all clients.
+
+### HTTP Request
+
+`GET https://example.com/v2/clients/{client_id}/users`
+
+### Parameters
+
+Parameter | Require| Default | Description
+--------- | -------| ------- | -----------
+access_token | true| | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+client_id |true|  | Client ID
+
+
 # Dictionary
+
+## Certifications
+
+
+```ruby
+content = RestClient.get 'https://example.com/v2/dictionaries/certifications',
+  {params: {access_token: '12345', auth_token: ''}}
+```
+
+> Success
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Reset",
+      "logo": "https://dn-reset.qbox.me/uploads/certification/logo/584a8923-0372-468f-9e42-1884ce41a3b5.png"
+    }
+  ],
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": null
+  }
+}
+
+```
+
+Get all certifications
+
+### HTTP Request
+
+`GET https://example.com/v2/dictionaries/certifications`
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
 
 ## Formulas
 
