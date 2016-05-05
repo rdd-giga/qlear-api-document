@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Document for QLEAR (v2.0) - Build: 2016-04-28 14:32:18</title>
+    <title>API Document for QLEAR (v2.0) - Build: 2016-05-05 15:19:15</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -1057,6 +1057,378 @@
 <td>false</td>
 <td></td>
 <td>Unlock Token</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-location">Update Location</h2>
+<pre class="highlight ruby"><code>
+
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">patch</span> <span class="s1">'https://example.com/v2/locations/45'</span><span class="p">,</span>
+  <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">''</span><span class="p">}}</span>
+</code></pre>
+
+<blockquote>
+<p>Success</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30834411-f7db-486a-840b-21eb66b2699e"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auth_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"348f5965-34c8-429e-a6ed-1c10e7d56d5b"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Update Location</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH https://example.com/v2/locations/45</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Require</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>false</td>
+<td>Access Token.</td>
+</tr>
+<tr>
+<td>auth_token</td>
+<td>true</td>
+<td></td>
+<td>Auth Token</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>false</td>
+<td>en</td>
+<td>Localization</td>
+</tr>
+<tr>
+<td>location_id</td>
+<td>true</td>
+<td></td>
+<td>Location ID</td>
+</tr>
+<tr>
+<td>tab</td>
+<td>true</td>
+<td>basic</td>
+<td>basic, advanced, monitor, permission, certification</td>
+</tr>
+<tr>
+<td>active</td>
+<td>false</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td>client_id</td>
+<td>true</td>
+<td></td>
+<td>Workspace, Owner or Client</td>
+</tr>
+<tr>
+<td>name</td>
+<td>true</td>
+<td></td>
+<td>Location Name</td>
+</tr>
+<tr>
+<td>category</td>
+<td>true</td>
+<td>indoor</td>
+<td>indoor or outdoor</td>
+</tr>
+<tr>
+<td>city_id</td>
+<td>true</td>
+<td></td>
+<td>City ID</td>
+</tr>
+<tr>
+<td>time_zone</td>
+<td>false</td>
+<td></td>
+<td>TimeZone</td>
+</tr>
+<tr>
+<td>outdoor_location_id</td>
+<td>false</td>
+<td></td>
+<td>Compared Outdoor ID</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>false</td>
+<td></td>
+<td>Location Theme</td>
+</tr>
+<tr>
+<td>logo</td>
+<td>false</td>
+<td></td>
+<td>Location Logo</td>
+</tr>
+<tr>
+<td>primary_indicator</td>
+<td>false</td>
+<td>pm2p5</td>
+<td>See indicators</td>
+</tr>
+<tr>
+<td>tvoc_unit</td>
+<td>false</td>
+<td>μg/m³</td>
+<td>μg/m³ or ppm</td>
+</tr>
+<tr>
+<td>privacy</td>
+<td>false</td>
+<td>false</td>
+<td>true or false, true for lock, otherwise public</td>
+</tr>
+<tr>
+<td>password</td>
+<td>false</td>
+<td></td>
+<td>set password if location is locked</td>
+</tr>
+<tr>
+<td>active_hours</td>
+<td>false</td>
+<td>false</td>
+<td>check if need set active hours</td>
+</tr>
+<tr>
+<td>active_hours_day_in_week</td>
+<td>false</td>
+<td></td>
+<td>Array, 0 for Sunday, 1 for Monday, and so on. [0, 1, 2, 3, 4, 5, 6]</td>
+</tr>
+<tr>
+<td>active_hours_begin_time</td>
+<td>false</td>
+<td></td>
+<td>Array, default [&#39;0:00&rsquo;, &#39;0:00&rsquo;, &#39;0:00&rsquo;, &#39;0:00&rsquo;, &#39;0:00&rsquo;, &#39;0:00&rsquo;, &#39;0:00&rsquo;]</td>
+</tr>
+<tr>
+<td>active_hours_end_time</td>
+<td>false</td>
+<td></td>
+<td>Array, default [&#39;23:59&rsquo;, &#39;23:59&rsquo;, &#39;23:59&rsquo;, &#39;23:59&rsquo;, &#39;23:59&rsquo;, &#39;23:59&rsquo;, &#39;23:59&rsquo;]</td>
+</tr>
+<tr>
+<td>active_hours_enable</td>
+<td>false</td>
+<td>true</td>
+<td>Array, default [true, true, true, true, true, true, true]</td>
+</tr>
+<tr>
+<td>active_hours_close_message_en</td>
+<td>false</td>
+<td></td>
+<td>message when non-acive, en</td>
+</tr>
+<tr>
+<td>active_hours_close_message_zh</td>
+<td>false</td>
+<td></td>
+<td>message when non-acive, zh-CN</td>
+</tr>
+<tr>
+<td>average_indicator</td>
+<td>false</td>
+<td></td>
+<td>Array</td>
+</tr>
+<tr>
+<td>average_active</td>
+<td>false</td>
+<td>true</td>
+<td>true for show, else hide</td>
+</tr>
+<tr>
+<td>monitor_id</td>
+<td>false</td>
+<td></td>
+<td>Array, Monitor ID</td>
+</tr>
+<tr>
+<td>monitor_name</td>
+<td>false</td>
+<td></td>
+<td>Array</td>
+</tr>
+<tr>
+<td>monitor_indicator</td>
+<td>false</td>
+<td></td>
+<td>Array of Array, see indicators</td>
+</tr>
+<tr>
+<td>monitor_active</td>
+<td>false</td>
+<td>true</td>
+<td>true for monitor enabled, else false</td>
+</tr>
+<tr>
+<td>permission_internal_access</td>
+<td>false</td>
+<td></td>
+<td>1 for Regular, 2 for Only Admins</td>
+</tr>
+<tr>
+<td>permission_user_id</td>
+<td>false</td>
+<td></td>
+<td>Array</td>
+</tr>
+<tr>
+<td>permission_role</td>
+<td>false</td>
+<td></td>
+<td>Array, member or admin</td>
+</tr>
+<tr>
+<td>certification_id</td>
+<td>false</td>
+<td></td>
+<td>Array</td>
+</tr>
+</tbody></table>
+
+<h2 id="location-staffs">Location Staffs</h2>
+<pre class="highlight ruby"><code>
+
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/locations/45/staffs'</span><span class="p">,</span>
+  <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">''</span><span class="p">}}</span>
+</code></pre>
+
+<blockquote>
+<p>Success</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30834411-f7db-486a-840b-21eb66b2699e"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auth_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"348f5965-34c8-429e-a6ed-1c10e7d56d5b"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Get staffs</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://example.com/v2/locations/45/staffs</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Require</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>false</td>
+<td>Access Token.</td>
+</tr>
+<tr>
+<td>auth_token</td>
+<td>true</td>
+<td></td>
+<td>Auth Token</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>false</td>
+<td>en</td>
+<td>Localization</td>
+</tr>
+<tr>
+<td>location_id</td>
+<td>true</td>
+<td></td>
+<td>Location ID</td>
+</tr>
+</tbody></table>
+
+<h2 id="location-certifications">Location Certifications</h2>
+<pre class="highlight ruby"><code>
+
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://example.com/v2/locations/45/certifications'</span><span class="p">,</span>
+  <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">''</span><span class="p">}}</span>
+</code></pre>
+
+<blockquote>
+<p>Success</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30834411-f7db-486a-840b-21eb66b2699e"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auth_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"348f5965-34c8-429e-a6ed-1c10e7d56d5b"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Get certifications</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://example.com/v2/locations/45/certifications</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Require</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>false</td>
+<td>Access Token.</td>
+</tr>
+<tr>
+<td>auth_token</td>
+<td>true</td>
+<td></td>
+<td>Auth Token</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>false</td>
+<td>en</td>
+<td>Localization</td>
+</tr>
+<tr>
+<td>location_id</td>
+<td>true</td>
+<td></td>
+<td>Location ID</td>
 </tr>
 </tbody></table>
 
@@ -3839,7 +4211,7 @@
 
 
     <div style="text-align: center; margin-top: 25px;">
-      <small>@2016 GIGA, Version: 2.0. Build: 2016-04-28 14:32:18</small>
+      <small>@2016 GIGA, Version: 2.0. Build: 2016-05-05 15:19:15</small>
     </div>
   </body>
 </html>
