@@ -8,6 +8,9 @@ Added|GET /v2/my/locations|Get locations of current owner
 Added|GET /v2/my/monitors|Get monitors of current owner
 Added|GET /v2/my/settings|Get display settings
 Added|PATCH /v2/settings|Update display settings
+Added|GET /v2/downloads|Get all prepared downloads
+Added|GET /v2/downloads/{download_id}|Download file
+
 
 ## 2016-05-05
 

@@ -73,7 +73,7 @@ content = RestClient.post 'https://example.com/v2/downloads/{download_id}',
 Binary
 ```
 
-Get all prepared downloads of current user.
+Download file
 ### HTTP Request
 
 `GET https://example.com/v2/downloads/1`
