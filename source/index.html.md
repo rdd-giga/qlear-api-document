@@ -14,6 +14,7 @@ includes:
   - reading
   - history
   - dict
+  - download
   - my
   - changelog
 
