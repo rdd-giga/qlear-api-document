@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Document for QLEAR (v2.0) - Build: 2016-05-13 11:01:39</title>
+    <title>API Document for QLEAR (v2.0) - Build: 2016-05-13 11:25:14</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -4297,6 +4297,151 @@
 </tr>
 </tbody></table>
 
+          <h1 id="download">Download</h1>
+
+<h2 id="get-all-prepared-downloads">Get All Prepared Downloads</h2>
+<pre class="highlight ruby"><code>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://example.com/v2/downloads'</span><span class="p">,</span>
+  <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">''</span><span class="p">}}</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"begin_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-27 10:58:24"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-27 10:58:25"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hour"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"search"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"tab"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hour"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"reporting_device_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"reading_time_begin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-04-01"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"reading_time_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-04-30"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"controller"</span><span class="p">:</span><span class="w"> </span><span class="s2">"readings"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"index"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sort_field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reading_time"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30834411-f7db-486a-840b-21eb66b2699e"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auth_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"348f5965-34c8-429e-a6ed-1c10e7d56d5b"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Get all prepared downloads of current user.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://example.com/v2/downloads</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Require</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>false</td>
+<td>Access Token.</td>
+</tr>
+<tr>
+<td>auth_token</td>
+<td>true</td>
+<td></td>
+<td>Auth Token</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>false</td>
+<td>en</td>
+<td>Localization</td>
+</tr>
+<tr>
+<td>page</td>
+<td>false</td>
+<td>1</td>
+<td>Page number</td>
+</tr>
+<tr>
+<td>size</td>
+<td>false</td>
+<td>20</td>
+<td>Size per page</td>
+</tr>
+</tbody></table>
+
+<h2 id="download-file">Download File</h2>
+<pre class="highlight ruby"><code>
+<span class="n">content</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://example.com/v2/downloads/{download_id}'</span><span class="p">,</span>
+  <span class="p">{</span><span class="ss">params: </span><span class="p">{</span><span class="ss">access_token: </span><span class="s1">''</span><span class="p">,</span> <span class="ss">auth_token: </span><span class="s1">''</span><span class="p">}}</span>
+</code></pre>
+<pre class="highlight plaintext"><code>Binary
+</code></pre>
+
+<p>Download file</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://example.com/v2/downloads/1</code></p>
+
+<aside class="notice">
+* You must replace <code>1</code> with your download ID.
+</aside>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Require</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>true</td>
+<td>false</td>
+<td>Access Token.</td>
+</tr>
+<tr>
+<td>auth_token</td>
+<td>true</td>
+<td></td>
+<td>Auth Token</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>false</td>
+<td>en</td>
+<td>Localization</td>
+</tr>
+<tr>
+<td>download_id</td>
+<td>true</td>
+<td></td>
+<td>Download ID</td>
+</tr>
+</tbody></table>
+
           <h1 id="my">My</h1>
 
 <h2 id="get-all-locations">Get All Locations</h2>
@@ -4690,6 +4835,16 @@
 <td>PATCH /v2/settings</td>
 <td>Update display settings</td>
 </tr>
+<tr>
+<td>Added</td>
+<td>GET /v2/downloads</td>
+<td>Get all prepared downloads</td>
+</tr>
+<tr>
+<td>Added</td>
+<td>GET /v2/downloads/{download_id}</td>
+<td>Download file</td>
+</tr>
 </tbody></table>
 
 <h2 id="2016-05-05">2016-05-05</h2>
@@ -4842,7 +4997,7 @@
 
 
     <div style="text-align: center; margin-top: 25px;">
-      <small>@2016 GIGA, Version: 2.0. Build: 2016-05-13 11:01:39</small>
+      <small>@2016 GIGA, Version: 2.0. Build: 2016-05-13 11:25:14</small>
     </div>
   </body>
 </html>
