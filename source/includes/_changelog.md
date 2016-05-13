@@ -1,5 +1,14 @@
 # Changelog
 
+## 2016-05-13
+
+Status|Api|Content|
+ -------| ------- | -----------
+Added|GET /v2/my/locations|Get locations of current owner
+Added|GET /v2/my/monitors|Get monitors of current owner
+Added|GET /v2/my/settings|Get display settings
+Added|PATCH /v2/settings|Update display settings
+
 ## 2016-05-05
 
 Status|Api|Content|

@@ -5,13 +5,8 @@
 ```ruby
 
 
-content = RestClient.get 'https://example.com/v2/locations',
-  {params: {access_token: '12345', per: 2, page: 2}}
-```
-
-
-```shell
-curl "https://example.com/v2/locations?access_token=12345&per=2&page=2"
+content = RestClient.get 'https://example.com/v2/my/locations',
+  {params: {access_token: '', auth_token: '', per: 2, page: 2}}
 ```
 
 ```json
@@ -58,10 +53,10 @@ curl "https://example.com/v2/locations?access_token=12345&per=2&page=2"
 }
 ```
 
-Get all locations, can be filtered by city id and location name
+Get all locations
 ### HTTP Request
 
-`GET https://example.com/v2/locations`
+`GET https://example.com/v2/my/locations`
 
 ### Parameters
 
@@ -74,3 +69,190 @@ city_id|false|  | City ID
 name|falase|| Location name (support fuzzy query, SFQ)
 page|false|1|Page number
 size|false|20|Size per page
+
+
+## Get All Monitor
+
+```ruby
+
+
+content = RestClient.get 'https://example.com/v2/my/monitors',
+  {params: {access_token: '', auth_token: ''}}
+```
+
+```json
+{
+  "data": [
+    {
+      "id": 2848,
+      "name": "3rd Floor",
+      "identifier": "IPM251546036",
+      "label": "3rd Floor ",
+      "logo": null,
+      "device_type": "air_assure",
+      "status": "ok",
+      "follow": false,
+      "indicator": [
+        "pm2p5"
+      ],
+      "last_reading_time": "2016-04-12 11:20:31",
+      "last_received_at": "2016-04-12 11:20:31",
+      "reading": [
+        {
+          "indicator": "pm2p5",
+          "name": "PM 2.5",
+          "unit": "μg/m³",
+          "value": 9,
+          "level": "good"
+        }
+      ]
+    },
+    {
+      "id": 2847,
+      "name": "4th Floor",
+      "identifier": "IPM251546018",
+      "label": "4th Floor ",
+      "logo": null,
+      "device_type": "air_assure",
+      "status": "ok",
+      "follow": false,
+      "indicator": [
+        "pm2p5"
+      ],
+      "last_reading_time": "2016-04-12 11:20:33",
+      "last_received_at": "2016-04-12 11:20:33",
+      "reading": [
+        {
+          "indicator": "pm2p5",
+          "name": "PM 2.5",
+          "unit": "μg/m³",
+          "value": 16,
+          "level": "good"
+        }
+      ]
+    },
+    {
+      "id": 2849,
+      "name": "7th Floor",
+      "identifier": "IPM251546040",
+      "label": "7th Floor ",
+      "logo": null,
+      "device_type": "air_assure",
+      "status": "ok",
+      "follow": false,
+      "indicator": [
+        "pm2p5"
+      ],
+      "last_reading_time": "2016-04-12 11:23:51",
+      "last_received_at": "2016-04-12 11:23:52",
+      "reading": [
+        {
+          "indicator": "pm2p5",
+          "name": "PM 2.5",
+          "unit": "μg/m³",
+          "value": 16,
+          "level": "good"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "eb98298f-fc85-49b9-ae6c-322bab7ad7b4"
+  }
+}
+```
+
+Get all monitors
+### HTTP Request
+
+`GET https://example.com/v2/my/monitors`
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|false||Auth Token
+locale |false| en | Localization
+
+
+## Get Display Settings
+
+```ruby
+
+
+content = RestClient.get 'https://example.com/v2/my/settings',
+  {params: {access_token: '', auth_token: ''}}
+```
+
+```json
+{
+  "data": {
+    "user_id": 15,
+    "pm2p5_display": "aqi",
+    "temp_unit": "f"
+  },
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
+
+Get display settings of current_user
+### HTTP Request
+
+`GET https://example.com/v2/my/settings`
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+
+
+## Update Display Settings
+
+```ruby
+
+
+content = RestClient.patch 'https://example.com/v2/my/settings',
+  {params: {access_token: '', auth_token: '', pm2p5_display: '', temp_unit: ''}}
+```
+
+```json
+{
+  "data": {
+    "user_id": 15,
+    "pm2p5_display": "aqi",
+    "temp_unit": "f"
+  },
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
+
+Get display settings of current_user
+### HTTP Request
+
+`PATCH https://example.com/v2/my/settings`
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+pm2p5_display|false|con| con for Concentration, aqi for AQI
+temp_unit|false|c| c for °C, f for °F
