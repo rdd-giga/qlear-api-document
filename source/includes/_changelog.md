@@ -1,5 +1,17 @@
 # Changelog
 
+## 2016-05-19
+
+Status|Api|Content|
+ -------| ------- | -----------
+Added|CREATE /v2/downloads|Create download
+Added|DELETE /v2/downloads/{download_id}|Destroy download
+Added|GET /v2/accounts|Get all accounts
+Added|GET /v2/accounts/{account_id}|Account detail
+Added|POST /v2/accounts|Create Account
+Added|PATCH /v2/accounts/{account_id}|Update account
+Added|DELETE /v2/accounts/{account_id}|Destroy account
+
 ## 2016-05-13
 
 Status|Api|Content|

@@ -291,7 +291,7 @@ content = RestClient.get 'https://example.com/v2/users/dashboard',
 }
 ```
 
-Create new account.
+Get dashboard
 
 ### HTTP Request
 

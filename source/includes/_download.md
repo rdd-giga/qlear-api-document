@@ -60,12 +60,51 @@ locale |false| en | Localization
 page|false|1|Page number
 size|false|20|Size per page
 
+## Create Download
+
+```ruby
+
+content = RestClient.post 'https://example.com/v2/downloads',
+  {params: {access_token: '', auth_token: ''}}
+```
+
+```
+{
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
+
+Create download
+### HTTP Request
+
+`POST https://example.com/v2/downloads`
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+name|true||Name of the download
+monitor_id|true||Monitor ID
+begi_time|true||Begin time for readings
+end_time|true||End time for readings
+category|true||raw, hour, day, minute_30 or minute_15
+
+
+
 
 ## Download File
 
 ```ruby
 
-content = RestClient.post 'https://example.com/v2/downloads/{download_id}',
+content = RestClient.get 'https://example.com/v2/downloads/{download_id}',
   {params: {access_token: '', auth_token: ''}}
 ```
 
@@ -77,6 +116,45 @@ Download file
 ### HTTP Request
 
 `GET https://example.com/v2/downloads/1`
+
+<aside class="notice">
+* You must replace <code>1</code> with your download ID.
+</aside>
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+download_id|true||Download ID
+
+
+## Destroy Download
+
+```ruby
+
+content = RestClient.delete 'https://example.com/v2/downloads/1',
+  {params: {access_token: '', auth_token: ''}}
+```
+
+```
+{
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
+
+Destroy download
+### HTTP Request
+
+`DELETE https://example.com/v2/downloads/1`
+
 
 <aside class="notice">
 * You must replace <code>1</code> with your download ID.
