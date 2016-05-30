@@ -87,11 +87,11 @@ location_id|true|  | Location ID
 monitor_id|true|| Monitor ID
 
 
-## Update Monitor
+## Create Monitor
 
 ```ruby
-content = RestClient.post 'https://example.com/v2/monitors/28',
-  {params: {access_token: '12345'}}
+content = RestClient.post 'https://example.com/v2/monitors',
+  {params: {access_token: '', auth_token: ''}}
 ```
 
 > Success
@@ -107,14 +107,40 @@ content = RestClient.post 'https://example.com/v2/monitors/28',
 }
 ```
 
-> Or failure
+Create monitor
 
+### HTTP Request
+
+`POST https://example.com/v2/monitors`
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+identifier|false||Identifier
+label|false||Label
+device_type|false||Device Type
+status|false||1 or 0, 1 for active
+client_id|false||Only available for QLEAR staff
+
+
+## Update Monitor
+
+```ruby
+content = RestClient.patch 'https://example.com/v2/monitors/28',
+  {params: {access_token: '', auth_token: ''}}
+```
+
+> Success
 
 ```json
 {
   "meta": {
-    "code": 10050,
-    "message": "Identifier has already been taken",
+    "code": 10000,
+    "message": "Success",
     "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
     "auth_token": "27148262-96bd-4608-8d7d-8afb8de7ffb2"
   }
@@ -122,10 +148,9 @@ content = RestClient.post 'https://example.com/v2/monitors/28',
 ```
 
 Update monitor
-
 ### HTTP Request
 
-`POST https://example.com/v2/monitors/28`
+`PATCH https://example.com/v2/monitors/28`
 
 <aside class="notice">
 * You must replace <code>28</code> with your monitor ID.

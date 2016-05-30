@@ -212,6 +212,55 @@ locale |false| en | Localization
 unlock_token|false||Unlock Token
 
 
+## Create Location
+
+
+```ruby
+
+
+content = RestClient.post 'https://example.com/v2/locations',
+  {params: {access_token: '', auth_token: ''}}
+```
+
+
+> Success
+
+```json
+{
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": "348f5965-34c8-429e-a6ed-1c10e7d56d5b"
+  }
+}
+```
+
+
+Update Location
+
+### HTTP Request
+
+`POST https://example.com/v2/locations`
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+auth_token|true||Auth Token
+locale |false| en | Localization
+active|false|true|
+client_id|true||Workspace, Owner or Client
+name|true||Location Name
+category|true|indoor| indoor or outdoor
+city_id|true||City ID
+time_zone|false||TimeZone
+outdoor_location_id|false||Compared Outdoor ID
+theme|false||Location Theme
+logo|false||Location Logo
+
+
 ## Update Location
 
 

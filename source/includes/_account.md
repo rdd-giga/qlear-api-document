@@ -43,6 +43,7 @@ Parameter | Require|  Default | Description
 access_token|true | false | Access Token.
 auth_token|true||Auth Token
 locale |false| en | Localization
+all|false||Set true, if you want to load all accounts
 client_id|false||Client ID
 email|false||Email
 category|false||User Type, manager, client or user
