@@ -89,6 +89,79 @@ locale | false| en | Localization
 email|true||Email
 password|true||Password
 
+
+## Reset Password
+
+```ruby
+
+
+content = RestClient.get 'https://example.com/v2/users/reset_password',
+  {params: {access_token: '', email: ''}}
+```
+
+```json
+{
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": null
+  }
+}
+```
+
+Send mail for reseting password instructions
+
+### HTTP Request
+
+`GET https://example.com/v2/users/reset_password`
+
+### Parameters
+
+Parameter | Require| Default | Description
+--------- | -------| ------- | -----------
+access_token | true| | Access Token.
+locale | false| en | Localization
+email|true||Email
+
+
+## Update Password By Reset Token
+
+```ruby
+
+
+content = RestClient.post 'https://example.com/v2/users/reset_password',
+  {params: {access_token: '', reset_password_token: '', password: '', email: ''}}
+```
+
+```json
+{
+  "meta": {
+    "code": 10000,
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": null
+  }
+}
+```
+
+Update password by the instructions
+
+### HTTP Request
+
+`POST https://example.com/v2/users/reset_password`
+
+### Parameters
+
+Parameter | Require| Default | Description
+--------- | -------| ------- | -----------
+access_token | true| | Access Token.
+locale | false| en | Localization
+email|true||Email
+reset_password_token|true||Token for reseting password
+password|true||New password
+
+
 ## Get Profile
 
 ```ruby
