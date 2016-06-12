@@ -43,6 +43,53 @@ access_token|true | false | Access Token.
 auth_token|true||Auth Token
 locale |false| en | Localization
 
+
+## Units
+
+
+```ruby
+content = RestClient.get 'https://example.com/v2/dictionaries/units',
+  {params: {access_token: '12345', auth_token: '', locaiton_id: ''}}
+```
+
+> Success
+
+```json
+{
+  "data": {
+    "pm2p5_display": "con",
+    "temperature": "°C",
+    "pm2p5": "μg/m³",
+    "tvoc": "μg/m³",
+    "humidity": "%RH",
+    "co2": "ppm",
+    "pm10": "μg/m³"
+  },
+  "meta": {
+    "code": "10000",
+    "message": "Success",
+    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
+    "auth_token": null
+  }
+}
+
+```
+
+Get units
+
+### HTTP Request
+
+`GET https://example.com/v2/dictionaries/units`
+
+### Parameters
+
+Parameter | Require|  Default | Description
+--------- | ------- | ------- | -----------
+access_token|true | false | Access Token.
+locale |false| en | Localization
+auth_token|false||Auth Token
+location_id| false || Location ID
+
 ## Formulas
 
 ```ruby

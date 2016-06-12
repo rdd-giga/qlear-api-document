@@ -222,7 +222,7 @@ locale |false| en | Localization
 ```ruby
 
 
-content = RestClient.patch 'https://example.com/v2/my/settings',
+content = RestClient.post 'https://example.com/v2/my/settings',
   {params: {access_token: '', auth_token: '', pm2p5_display: '', temp_unit: ''}}
 ```
 
@@ -245,7 +245,7 @@ content = RestClient.patch 'https://example.com/v2/my/settings',
 Get display settings of current_user
 ### HTTP Request
 
-`PATCH https://example.com/v2/my/settings`
+`POST https://example.com/v2/my/settings`
 
 ### Parameters
 
