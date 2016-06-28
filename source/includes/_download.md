@@ -18,6 +18,8 @@ content = RestClient.post 'https://example.com/v2/downloads',
       "begin_time": "2016-04-27 10:58:24",
       "end_time": "2016-04-27 10:58:25",
       "category": "hour",
+      "status": "Pending",
+      "exception": nil,
       "conditions": {
         "model": "search",
         "tab": "hour",
