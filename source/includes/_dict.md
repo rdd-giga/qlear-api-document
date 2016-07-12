@@ -251,24 +251,18 @@ content = RestClient.get 'https://example.com/v2/dictionaries/monitor_types',
 ```json
 {
   "data": {
-    "fluke": "Fluke",
-    "air_advice": "Air advice",
-    "us_embassy": "Us embassy",
-    "env_monitor": "Env monitor",
-    "particles_plus": "Particles plus",
-    "china_government": "China government",
-    "ion_science": "Ion science",
-    "air_assure": "Air assure",
-    "net_work": "Net work",
-    "laser_egg": "Laser egg",
-    "dst": "Dst",
-    "tondy": "Tondy"
+    "tongdy": "Tongdy",
+    "air_advice": "Air Advice",
+    "laser_egg": "Laser Egg",
+    "env_monitor": "Met One Env Monitor",
+    "ion_science": "Ion Science",
+    "particles_plus": "Particle Plus"
   },
   "meta": {
     "code": 10000,
     "message": "Success",
-    "access_token": "30834411-f7db-486a-840b-21eb66b2699e",
-    "auth_token": "27148262-96bd-4608-8d7d-8afb8de7ffb2"
+    "access_token": "6711d819-61bb-4342-9ae3-17c8a477629b",
+    "auth_token": null
   }
 }
 ```
@@ -422,7 +416,7 @@ locale |false| en | Localization
 
 ```ruby
 content = RestClient.get 'https://example.com/v2/dictionaries/outdoors',
-  {params: {access_token: '12345', auth_token: '....'}}
+  {params: {access_token: '12345', auth_token: '....', city_id: ''}}
 ```
 
 > Success
@@ -455,3 +449,4 @@ Parameter | Require|  Default | Description
 access_token|true | false | Access Token.
 auth_token|true||Auth Token
 locale |false| en | Localization
+city_id| true| | City ID
