@@ -40,3 +40,4 @@ Numbers, currency and datetime don’t rely on localization so they will always 
 Parameter | Require|  Default | Description
 --------- | ------- | ------- | -----------
 source|true|  | web or app
+time_zone|false|'Asia/Shanghai'|TZ for user, such as browser
