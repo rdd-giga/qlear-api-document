@@ -20,7 +20,7 @@ under the License.
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title><%= current_page.data.title || "API Documentation" %> - Build: <%=Time.now.to_s :db%></title>
+    <title><%= current_page.data.title || "API Documentation" %> - Build: <%=Time.now.to_s%></title>
 
     <style>
       <%= Rouge::Themes::Base16::Monokai.render(:scope => '.highlight') %>
@@ -38,7 +38,7 @@ under the License.
     <div class="navbar-container">
       <nav class="navbar">
         <a class="logo-container" href="/">
-          <%= image_tag "qlear-logo-white.png", style: 'height: 30px; margin-top: 10px;'%>
+          <%= image_tag "qlear-logo-white.png", style: 'height: 30px; margin-left: 5px; margin-top: 10px;'%>
         </a>
         <ul>
           <li>
@@ -47,10 +47,7 @@ under the License.
               </optgroup>
             </select>
           </li>
-          <li><a href="http://qlear.build" target="_blank">QLEAR</a></li>
-          <li><a href="http://matter.build" target="_blank">Matter</a></li>
-          <li><a href="http://gigabase.org" target="_blank">GigaBase</a> <!-- b class="caret"></b>< -->
-          <li style="padding-bottom:0;"><a href="#" class="button">Apps</a></li>
+          <li><a href="#" target="_blank">Air Master</a></li>
         </ul>
       </nav>
     </div>
@@ -61,60 +58,21 @@ under the License.
         <%= image_tag('navbar.png') %>
       </span>
     </a>
-    <div class="tocify-wrapper">
-      <% if language_tabs %>
-        <div class="lang-selector">
-          <% language_tabs.each do |lang| %>
-            <% if lang.is_a? Hash %>
-              <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
-            <% else %>
-              <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
-            <% end %>
-          <% end %>
-        </div>
-      <% end %>
-      <% if  false && current_page.data.search %>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
-      <% end %>
-      <div id="toc">
-      </div>
-      <% if current_page.data.toc_footers %>
-        <ul class="toc-footer">
-          <% current_page.data.toc_footers.each do |footer| %>
-            <li><%= footer %></li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
+   
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <%= yield %>
+        
         <% current_page.data.includes && current_page.data.includes.each do |include| %>
           <%= partial "includes/#{include}" %>
-        <% end %>
-      </div>
-      <div class="dark-box">
-        <% if language_tabs %>
-          <div class="lang-selector">
-            <% language_tabs.each do |lang| %>
-              <% if lang.is_a? Hash %>
-                <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
-              <% else %>
-                <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
-              <% end %>
-            <% end %>
-          </div>
         <% end %>
       </div>
     </div>
 
 
     <div style="text-align: center; margin-top: 25px;">
-      <small>@2016 GIGA, Version: 2.0. Build: <%=Time.now.to_s :db%></small>
+      <small>@<%=Time.now.year%> Air Master, Version: 1.0. Build: <%=Time.now.to_s%></small>
     </div>
   </body>
 </html>

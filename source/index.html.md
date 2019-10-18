@@ -1,24 +1,11 @@
 ---
-title: API Document for QLEAR (v2.0)
+title: QLEAR 接口文档
 
 language_tabs:
-  - ruby
+  - json
 
 includes:
-  - introduction
-  - user
-  - city
-  - client
-  - account
-  - location
-  - monitor
-  - reading
-  - history
-  - dict
-  - download
-  - my
-  - changelog
-
+  - v3/
 
 search: true
 ---
