@@ -98,5 +98,6 @@ GET /v3/data_sources/{data_source_id}
 | 参数         | 类型   | 必须 | 默认 | 说明       |
 | ------------ | ------ | ---- | ---- | ---------- |
 | access_token | String | 是   |      | 授权 Token |
+| type        |  String| 否 | id| 可选 identifier|
 | version      | Number | 否   | 3.1  | 请求版本   |
 | sign         | String | 是   |      | 签名       |
