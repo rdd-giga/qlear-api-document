@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>QLEAR 接口文档 - Build: 2019-10-23 11:54:39 +0800</title>
+    <title>QLEAR 接口文档 - Build: 2019-11-01 13:05:07 +0800</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -195,6 +195,36 @@
 <tr>
 <td>10050</td>
 <td>服务器异常</td>
+</tr>
+</tbody></table>
+
+          <h2 id="part-2ddbbac0a6d0fe7d">类型说明</h2>
+
+<p>文档中给出了全部返回值的类型并对部分字段进行了注解</p>
+
+<p>类型书写采用的typescript的格式。</p>
+
+<table><thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>?</td>
+<td>值可能为 null 或 字段不存在</td>
+</tr>
+<tr>
+<td>&#124;</td>
+<td>或</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>数组且数组元素均为该类型</td>
+</tr>
+<tr>
+<td>&ldquo;&rdquo;</td>
+<td>特定的字符串</td>
 </tr>
 </tbody></table>
 
@@ -514,6 +544,70 @@
 </tr>
 </tbody></table>
 
+<h2 id="part-302fa31e6db091fc">场所数据类型</h2>
+<pre class="highlight typescript"><code><span class="p">{</span>
+  <span class="nl">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">abbr</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">city_id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">pro</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+    <span class="nl">qr_code</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">category</span><span class="p">:</span> <span class="s2">"indoor"</span> <span class="o">|</span> <span class="s2">"outdoor"</span><span class="p">;</span>
+    <span class="nl">time_zone</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nx">address</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">created_at</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">followed</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span> <span class="c1">// 是否被关注</span>
+    <span class="nx">following_id</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">locked</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>  <span class="c1">// 是否开启密码锁定</span>
+    <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">city_name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">workspace_id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">workspace_name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">search_time_enabled_at</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nx">background_image</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nx">logo_image</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nx">work_hours</span><span class="p">?:</span> <span class="p">{</span> <span class="c1">// 工作时间信息</span>
+      <span class="na">active</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span> <span class="c1">// 是否启用工作时间设置</span>
+      <span class="nl">data</span><span class="p">:</span> <span class="p">{</span> <span class="c1">// 工作时间的区间</span>
+        <span class="nl">day_in_week</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+        <span class="nl">active</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+        <span class="nl">begin_time</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">end_time</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+      <span class="p">}[];</span> 
+    <span class="p">};</span>
+    <span class="nx">outdoor</span><span class="p">?:</span> <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+      <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="p">};</span> <span class="c1">// 关联的室外场所</span>
+    <span class="nl">collections</span><span class="p">:</span> <span class="p">{</span> <span class="c1">// 场所中的集合信息</span>
+      <span class="nl">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+      <span class="nl">code</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+      <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="p">}[];</span>
+    <span class="nx">average</span><span class="p">?:</span> <span class="p">{</span> <span class="c1">// 场所平均值信息</span>
+      <span class="na">status</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="c1">// 平均值的数据源状态</span>
+      <span class="nl">performance</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="c1">// 根据第一条（pm2.5）的标准计算出的状态</span>
+      <span class="nl">stale</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span> <span class="c1">// 是否长时间没有数据</span>
+      <span class="nl">last_reading_time</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="c1">// 最后一次数据的时间</span>
+      <span class="nl">readings</span><span class="p">:</span> <span class="p">{</span>  <span class="c1">// 平均值中数据信息</span>
+        <span class="nl">data_channel</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">type</span><span class="p">:</span> <span class="s2">"air"</span> <span class="o">|</span> <span class="s2">"electricity"</span><span class="p">;</span>
+        <span class="nl">unit</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nx">value</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+        <span class="nx">level</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+      <span class="p">}[];</span>
+    <span class="p">};</span>
+    <span class="nl">data_channels</span><span class="p">:</span> <span class="p">{</span> <span class="c1">// 数据源信息</span>
+      <span class="nl">channel</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+      <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="p">}[];</span>
+  <span class="p">};</span>
+  <span class="nl">meta</span><span class="p">:</span> <span class="p">{</span>
+    <span class="p">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
           <h2 id="part-2ec26764e036ac81">集合列表</h2>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -682,6 +776,46 @@
 </tr>
 </tbody></table>
 
+<h2 id="part-2ec26764e7da9acd">集合类型</h2>
+<pre class="highlight typescript"><code><span class="p">{</span>
+  <span class="nl">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">abbr</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">code</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">indicators</span><span class="p">:</span> <span class="p">{</span> <span class="c1">// 集合中指标信息</span>
+      <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+      <span class="nl">data_channel</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="c1">//指标使用的数据源相关信息</span>
+      <span class="nl">data_channel_name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+      <span class="nl">data_source_id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+      <span class="nl">data_source_identifier</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+      <span class="nl">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="p">}[];</span>
+    <span class="nl">locations</span><span class="p">:</span> <span class="p">{</span> <span class="c1">// 集合被使用的场所信息</span>
+      <span class="nl">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+      <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+      <span class="nl">category</span><span class="p">:</span> <span class="s2">"indoor"</span> <span class="o">|</span> <span class="s2">"outdoor"</span><span class="p">;</span>
+    <span class="p">}[];</span>
+    <span class="nx">notes</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span> <span class="c1">// 备注</span>
+    <span class="nl">reading</span><span class="p">:</span> <span class="p">{</span> <span class="c1">// 集合的数据相关信息</span>
+      <span class="nx">last_reading_time</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+      <span class="nl">stale</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+      <span class="nx">status</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+      <span class="nl">data_channels</span><span class="p">:</span> <span class="p">{</span> <span class="c1">// 集合中数据源的信息</span>
+        <span class="nl">data_channel</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nx">level</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nl">type</span><span class="p">:</span> <span class="s2">"air"</span> <span class="o">|</span> <span class="s2">"electricity"</span><span class="p">;</span>
+        <span class="nl">unit</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="nx">value</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+      <span class="p">}[];</span>
+    <span class="p">};</span>
+  <span class="p">};</span>
+  <span class="nl">meta</span><span class="p">:</span> <span class="p">{</span>
+    <span class="p">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
           <h2 id="part-2e7f76809f9ee6fe">设备列表</h2>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -855,7 +989,7 @@
 
 
     <div style="text-align: center; margin-top: 25px;">
-      <small>@2019 Air Master, Version: 1.0. Build: 2019-10-23 11:54:39 +0800</small>
+      <small>@2019 Air Master, Version: 1.0. Build: 2019-11-01 13:05:07 +0800</small>
     </div>
   </body>
 </html>
