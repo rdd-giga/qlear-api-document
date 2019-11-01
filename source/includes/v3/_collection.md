@@ -30,7 +30,7 @@
 }
 ```
 
-接口描述 ...
+[集合的含义](https://qlear.io/web/knowledge/38)
 
 ### 接口
 

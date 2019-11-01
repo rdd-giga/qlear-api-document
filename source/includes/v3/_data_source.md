@@ -29,6 +29,34 @@
 }
 ```
 
+```typescript
+{
+  data:{
+    assigned_data_channels: string[]; // 已关联的数据源
+    brand: string; // 设备厂牌
+    brand_id: number;
+    brand_name: string;
+    calibrated: boolean; // 是否被默认校准
+    created_at: string;
+    enable_status_notification: boolean;
+    id: number;
+    identifier: string; // 设备唯一标识
+    image?: string;
+    model: string; // 款式型号
+    model_id: number;
+    model_name: string;
+    name?: string;
+    parameters: string[]; // 支持的类型（空气、电 等等）
+    search_time_enabled_at: string;
+    status: string; // 当前状态
+    unassigned_count: number; // 未关联的数据通道数量
+  }[];
+  meta: {
+    ...
+  }
+}
+```
+
 接口描述 ...
 
 ### 接口
@@ -87,7 +115,59 @@ GET /v3/data_sources
 }
 ```
 
-接口描述 ...
+```typescript
+{
+  data: {
+    assigned_data_channels: string[];
+    brand: string;
+    brand_id: number;
+    brand_name: string;
+    calibrated: boolean;
+    channels?: { // 使用的数据通道信息
+      channel: string;
+      channel_name: string;
+      data_source_id: number;
+      id: number;
+      indicator: string;
+      name: string;
+      unit: string;
+      abbr?: string;
+    }[];
+    created_at: string;
+    enable_status_notification: boolean; // 设备是否开启了状态通知
+    flatline_limit?: number; // flatline状态 标准
+    id: number;
+    identifier: string;
+    image?: string;
+    last_averaged_at?: string;  // 系列时间
+    last_calibrated_at?: string;
+    last_consumed_time?: string;
+    last_reading_time?: string;
+    last_received_time?: string;
+    model: string;
+    model_id: number;
+    model_name: string;
+    name: string;
+    offline_limit?: number; // offline 状态标准
+    parameters: string[];
+    reading?: { // 最新一条数据信息
+      ... // 各种接收到的数据信息（不同型号的设备发送的数据各不相同）
+      reading_time: string;
+      enqueue_time: string;
+      source: string;
+      type: string;
+    };
+    search_time_enabled_at: string;
+    status: string;
+    unassigned_count: number;
+  };
+  meta: {
+    ...
+  }
+}
+```
+
+[数据源的含义](https://qlear.io/web/knowledge/58)
 
 ### 接口
 
@@ -101,3 +181,5 @@ GET /v3/data_sources/{data_source_id}
 | type        |  String| 否 | id| 可选 identifier|
 | version      | Number | 否   | 3.1  | 请求版本   |
 | sign         | String | 是   |      | 签名       |
+
+
