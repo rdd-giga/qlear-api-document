@@ -11,6 +11,7 @@ includes:
   - v3/sign
   - v3/env
   - v3/code
+  - v3/type
   - v3/location
   - v3/collection
   - v3/data_source

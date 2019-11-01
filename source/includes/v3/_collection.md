@@ -107,3 +107,47 @@ GET /v3/collections/{collection_id}
 | access_token | String | 是   |      | 授权 Token |
 | version      | Number | 否   | 3.1  | 请求版本   |
 | sign         | String | 是   |      | 签名       |
+
+
+## 集合类型
+
+```typescript
+{
+  data: {
+    abbr: string;
+    code: string;
+    id: number;
+    name: string;
+    indicators: { // 集合中指标信息
+      name: string;
+      data_channel: string; //指标使用的数据源相关信息
+      data_channel_name: string;
+      data_source_id: number;
+      data_source_identifier: string;
+      id: number;
+    }[];
+    locations: { // 集合被使用的场所信息
+      id: number;
+      name: string;
+      category: "indoor" | "outdoor";
+    }[];
+    notes?: string; // 备注
+    reading: { // 集合的数据相关信息
+      last_reading_time?: string;
+      stale: boolean;
+      status?: string;
+      data_channels: { // 集合中数据源的信息
+        data_channel: string;
+        level?: string;
+        name: string;
+        type: "air" | "electricity";
+        unit: string;
+        value?: number;
+      }[];
+    };
+  };
+  meta: {
+    ...
+  }
+}
+```

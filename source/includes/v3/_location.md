@@ -255,3 +255,70 @@ GET /v3/locations/{location_id}
 | access_token | String | 是   |      | 授权 Token |
 | version      | Number | 否   | 3.1  | 请求版本   |
 | sign         | String | 是   |      | 签名       |
+
+## 场所数据类型
+
+```typescript
+{
+  data: {
+    abbr: string;
+    id: number;
+    city_id: number;
+    pro: boolean;
+    qr_code: string;
+    category: "indoor" | "outdoor";
+    time_zone: string;
+    address?: string;
+    created_at: string;
+    followed: boolean; // 是否被关注
+    following_id?: number;
+    locked: boolean;  // 是否开启密码锁定
+    name: string;
+    city_name: string;
+    workspace_id: number;
+    workspace_name: string;
+    search_time_enabled_at: string;
+    background_image?: string;
+    logo_image?: string;
+    work_hours?: { // 工作时间信息
+      active: boolean; // 是否启用工作时间设置
+      data: { // 工作时间的区间
+        day_in_week: number;
+        active: boolean;
+        begin_time: string;
+        end_time: string;
+      }[]; 
+    };
+    outdoor?: {
+      id: number;
+      name: string;
+    }; // 关联的室外场所
+    collections: { // 场所中的集合信息
+      id: number;
+      code: string;
+      name: string;
+    }[];
+    average?: { // 场所平均值信息
+      status: string; // 平均值的数据源状态
+      performance: string; // 根据第一条（pm2.5）的标准计算出的状态
+      stale: boolean; // 是否长时间没有数据
+      last_reading_time: string; // 最后一次数据的时间
+      readings: {  // 平均值中数据信息
+        data_channel: string;
+        name: string;
+        type: "air" | "electricity";
+        unit: string;
+        value?: number;
+        level?: string;
+      }[];
+    };
+    data_channels: { // 数据源信息
+      channel: string;
+      name: string;
+    }[];
+  };
+  meta: {
+    ...
+  }
+}
+```
