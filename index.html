@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>QLEAR 接口文档 - Build: 2019-11-01 13:05:07 +0800</title>
+    <title>QLEAR 接口文档 - Build: 2019-11-01 18:58:46 +0800</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -315,7 +315,7 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>接口描述 &hellip;</p>
+<p><a href="https://qlear.io/web/knowledge/36">场所的含义</a></p>
 
 <h3 id="part-6542ac978b5">接口</h3>
 
@@ -637,7 +637,7 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>接口描述 &hellip;</p>
+<p><a href="https://qlear.io/web/knowledge/38">集合的含义</a></p>
 
 <h3 id="part-6542ac978b5">接口</h3>
 
@@ -843,7 +843,32 @@
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><pre class="highlight typescript"><code><span class="p">{</span>
+  <span class="nl">data</span><span class="p">:{</span>
+    <span class="nl">assigned_data_channels</span><span class="p">:</span> <span class="kr">string</span><span class="p">[];</span> <span class="c1">// 已关联的数据源</span>
+    <span class="nl">brand</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="c1">// 设备厂牌</span>
+    <span class="nl">brand_id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">brand_name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">calibrated</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span> <span class="c1">// 是否被默认校准</span>
+    <span class="nl">created_at</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">enable_status_notification</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+    <span class="nl">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">identifier</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="c1">// 设备唯一标识</span>
+    <span class="nx">image</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">model</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="c1">// 款式型号</span>
+    <span class="nl">model_id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">model_name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nx">name</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">parameters</span><span class="p">:</span> <span class="kr">string</span><span class="p">[];</span> <span class="c1">// 支持的类型（空气、电 等等）</span>
+    <span class="nl">search_time_enabled_at</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">status</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="c1">// 当前状态</span>
+    <span class="nl">unassigned_count</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span> <span class="c1">// 未关联的数据通道数量</span>
+  <span class="p">}[];</span>
+  <span class="nl">meta</span><span class="p">:</span> <span class="p">{</span>
+    <span class="p">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 <p>接口描述 &hellip;</p>
 
 <h3 id="part-6542ac978b5">接口</h3>
@@ -936,8 +961,57 @@
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>接口描述 &hellip;</p>
+</span></code></pre><pre class="highlight typescript"><code><span class="p">{</span>
+  <span class="nl">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">assigned_data_channels</span><span class="p">:</span> <span class="kr">string</span><span class="p">[];</span>
+    <span class="nl">brand</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">brand_id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">brand_name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">calibrated</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+    <span class="nx">channels</span><span class="p">?:</span> <span class="p">{</span> <span class="c1">// 使用的数据通道信息</span>
+      <span class="na">channel</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+      <span class="nl">channel_name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+      <span class="nl">data_source_id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+      <span class="nl">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+      <span class="nl">indicator</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+      <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+      <span class="nl">unit</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+      <span class="nx">abbr</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="p">}[];</span>
+    <span class="nl">created_at</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">enable_status_notification</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span> <span class="c1">// 设备是否开启了状态通知</span>
+    <span class="nx">flatline_limit</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span> <span class="c1">// flatline状态 标准</span>
+    <span class="nl">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">identifier</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nx">image</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nx">last_averaged_at</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>  <span class="c1">// 系列时间</span>
+    <span class="nx">last_calibrated_at</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nx">last_consumed_time</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nx">last_reading_time</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nx">last_received_time</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">model</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">model_id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">model_name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nx">offline_limit</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span> <span class="c1">// offline 状态标准</span>
+    <span class="nl">parameters</span><span class="p">:</span> <span class="kr">string</span><span class="p">[];</span>
+    <span class="nx">reading</span><span class="p">?:</span> <span class="p">{</span> <span class="c1">// 最新一条数据信息</span>
+      <span class="p">...</span> <span class="c1">// 各种接收到的数据信息（不同型号的设备发送的数据各不相同）</span>
+      <span class="na">reading_time</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+      <span class="nl">enqueue_time</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+      <span class="nl">source</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+      <span class="nl">type</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="nl">search_time_enabled_at</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">status</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">unassigned_count</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="p">};</span>
+  <span class="nl">meta</span><span class="p">:</span> <span class="p">{</span>
+    <span class="p">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<p><a href="https://qlear.io/web/knowledge/58">数据源的含义</a></p>
 
 <h3 id="part-6542ac978b5">接口</h3>
 
@@ -989,7 +1063,7 @@
 
 
     <div style="text-align: center; margin-top: 25px;">
-      <small>@2019 Air Master, Version: 1.0. Build: 2019-11-01 13:05:07 +0800</small>
+      <small>@2019 Air Master, Version: 1.0. Build: 2019-11-01 18:58:46 +0800</small>
     </div>
   </body>
 </html>
